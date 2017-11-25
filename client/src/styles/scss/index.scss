@@ -1,0 +1,13 @@
+@import "./bootstrap/functions";
+@import "./bootstrap/variables";
+@import "./bootstrap/mixins";
+
+@import "./variables";
+
+// Layout
+@import './layout/header';
+@import './layout/footer';
+@import './layout/main';
+
+// Pages
+@import './pages/home';

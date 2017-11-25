@@ -1,0 +1,20 @@
+.home-content {
+	text-align: center;
+		
+	.top-content {
+		background-color: #222;
+		height: 150px;
+		padding: 20px;
+		color: white;
+
+		.content-logo {
+		  animation: content-logo-spin infinite 20s linear;
+		  height: 80px;
+		}
+
+		@keyframes content-logo-spin {
+		  from { transform: rotate(0deg); }
+		  to { transform: rotate(360deg); }
+		}
+	}
+}
