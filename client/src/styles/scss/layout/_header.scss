@@ -1,1 +1,14 @@
+header.page-header {
+  position: relative;
 
+  .navbar-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &.bg-dark {
+      background-color: rgba(color('gray-dark'), .7) !important;
+    }
+  }
+}

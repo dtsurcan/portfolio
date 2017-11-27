@@ -1,0 +1,13 @@
+{
+  "header": {
+    "menu": {
+      "logo-title": "Это твой шанс!",
+      "contacts": "Контакты"
+    }
+  },
+  "title": "Добро пожальовать react-i18next",
+  "description": {
+    "part1": "Чтобы начать, отредактируйте <1>src/App(RU).js</1> и сохраните для обновления.",
+    "part2": "Switch language between english and german using buttons above."
+  }
+}

@@ -10,6 +10,8 @@ import Footer from './../layout/Footer';
 import Home from './Home';
 import Info from './Info';
 
+import { _log } from './../utils';
+
 class App extends Component {
 
   // When component did mount
@@ -27,13 +29,13 @@ class App extends Component {
 
     // Set min height for inner main content
     const setMinHeight = () => {
-      console.log('Change min height');
+      _log('Changed min height of App');
 
-      const $header = document.querySelector('header.page-header');
-      const $footer = document.querySelector('footer.page-footer');
-      const $main = document.querySelector('main.page-main');
+      const //$header = document.querySelector('header.page-header'),
+            $footer = document.querySelector('footer.page-footer'),
+            $main = document.querySelector('main.page-main');
 
-      $main.style.minHeight = (window.innerHeight - $header.clientHeight - $footer.clientHeight) + 'px';
+      $main.style.minHeight = (window.innerHeight /*- $header.clientHeight*/ - $footer.clientHeight) + 'px';
     };
 
     // Call function
@@ -41,6 +43,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <Router>
         <div>

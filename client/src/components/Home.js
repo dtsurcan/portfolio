@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
-import {
-  NavLink
-} from 'react-router-dom';
-import { Container } from 'reactstrap';
+import { Container, Jumbotron } from 'reactstrap';
+import { translate, Trans } from 'react-i18next';
 
-import logo from './../images/logo.svg';
+import bgSrc from './../images/655147030.jpg';
 
-export default class Home extends Component {
+class Home extends Component {
 
   render() {
+    const { t } = this.props;
+
+    const style = {
+      backgroundImage: 'url(' + bgSrc + ')'
+    }
+
     return (
       <div className="home-content">
-        <div className="top-content mb-5">
+        <Jumbotron style={ style } data-toggle="pane">
           <Container>
-            <img src={logo} className="content-logo" alt="logo" />
-            <h1 className="content-title">Welcome to React</h1>
+            <div className="wrapper-title">
+              <h2>{t('title')}</h2>
+              <Trans i18nKey="description.part1">
+                To get started, edit <code>src/App.js</code> and save to reload.
+              </Trans>
+            </div>
           </Container>
-        </div>
-
-        <Container>
-          <h2>Home</h2>
-
-          <p>
-            <NavLink exact={ true } activeClassName='active' className='nav-link' to='/info'>Info</NavLink>
-          </p>
-        </Container>
+        </Jumbotron>
       </div>
     );
   }
 }
+
+export default translate('translations')(Home);

@@ -1,3 +1,13 @@
+header.page-header {
+  position: relative; }
+  header.page-header .navbar-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; }
+    header.page-header .navbar-header.bg-dark {
+      background-color: rgba(52, 58, 64, 0.7) !important; }
+
 footer.page-footer {
   background: #e9ecef; }
 
@@ -6,17 +16,17 @@ main.page-main {
 
 .home-content {
   text-align: center; }
-  .home-content .top-content {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white; }
-    .home-content .top-content .content-logo {
-      animation: content-logo-spin infinite 20s linear;
-      height: 80px; }
-
-@keyframes content-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+  .home-content .jumbotron {
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    height: 30rem;
+    border-radius: 0; }
+    .home-content .jumbotron .wrapper-title {
+      background-color: rgba(52, 58, 64, 0.75);
+      color: #fff;
+      max-width: 50rem;
+      margin: 0	auto;
+      padding: 1rem 3rem;
+      border-radius: 0.25rem; }

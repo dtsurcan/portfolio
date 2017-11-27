@@ -1,20 +1,24 @@
 .home-content {
 	text-align: center;
-		
-	.top-content {
-		background-color: #222;
-		height: 150px;
-		padding: 20px;
-		color: white;
 
-		.content-logo {
-		  animation: content-logo-spin infinite 20s linear;
-		  height: 80px;
-		}
+	$hTop: 30rem;
+	.jumbotron {
+		background-size: cover;
+		background-repeat: no-repeat;
+		display: flex;
+		align-items: center;
+		height: $hTop;
 
-		@keyframes content-logo-spin {
-		  from { transform: rotate(0deg); }
-		  to { transform: rotate(360deg); }
+		@include border-radius(0);
+
+		.wrapper-title {
+			background-color: rgba(color("gray-dark"), .75);
+			color: $white;
+			max-width: 50rem;
+			margin: 0	auto;
+			padding: 1rem 3rem;
+
+			@include border-radius($border-radius);
 		}
 	}
 }
