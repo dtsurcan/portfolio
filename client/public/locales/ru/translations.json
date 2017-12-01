@@ -2,12 +2,19 @@
   "header": {
     "menu": {
       "logo-title": "Это твой шанс!",
+      "skills": "Навыки",
+      "projects": "Проекты",
+      "calendar": "Календарь",
       "contacts": "Контакты"
     }
   },
-  "title": "Добро пожальовать react-i18next",
-  "description": {
-    "part1": "Чтобы начать, отредактируйте <1>src/App(RU).js</1> и сохраните для обновления.",
-    "part2": "Switch language between english and german using buttons above."
+  "title": "Добро пожаловать на мою страницу.",
+  "description": "Здесь вы можете ознакомиться со списком моих <1>навыков</1>, <3>проектов</3> и моим <5>календарем</5>, а также вы сможете <7>связаться</7> со мной.",
+  "skills": "Навыки",
+  "skills-sub": {
+    "best-friends": "Лучшие друзья",
+    "js-css-helpers": "JS/CSS помощники",
+    "html-css-js-libraries": "HTML+CSS+JS Библиотеки",
+    "additional": "Дополнительно"
   }
 }

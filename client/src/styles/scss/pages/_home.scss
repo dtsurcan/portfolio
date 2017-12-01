@@ -1,13 +1,13 @@
 .home-content {
 	text-align: center;
 
-	$hTop: 30rem;
+	$h: 20rem;
 	.jumbotron {
-		background-size: cover;
-		background-repeat: no-repeat;
+		background: none;
 		display: flex;
 		align-items: center;
-		height: $hTop;
+		min-height: $h;
+		margin-bottom: 0;
 
 		@include border-radius(0);
 
@@ -19,6 +19,218 @@
 			padding: 1rem 3rem;
 
 			@include border-radius($border-radius);
+		}
+	}
+
+	section.s-top {
+		position: relative;
+
+		$a-size: 3.5rem;
+		.wrapper-goto {
+			position: absolute;
+			bottom: -($a-size / 2);
+			left: 50%;
+			z-index: 1;
+			transform: translateX(-50%);
+
+			> a {
+				background: gray("100");
+				color: theme-color("primary-dark");
+				cursor: pointer;
+				display: block;
+				width: $a-size;
+				height: $a-size;
+				line-height: $a-size;
+				text-align: center;
+
+				@include border-radius(50%);
+				@include box-shadow($popover-box-shadow);
+				@include transition($transition-base);
+
+				.fa {
+					vertical-align: middle;
+				}
+
+				@include hover-focus {
+					background: theme-color("primary-dark");
+					color: $white;
+					transform: translateY(5%);
+				};
+			}
+		}
+	}
+
+	$h: 18.75rem;
+	section.s-about-me {
+		background: gray("800");
+		color: $white;
+		display: flex;
+		align-items: center;
+		min-height: $h;
+		margin-bottom: 0;
+		padding: 3rem 0;
+		position: relative;
+
+		@include box-shadow(inset 0 11px 10px -9px rgba($black, .5),
+												inset 0 -11px 10px -9px rgba($black, .5));
+
+		blockquote {
+			background: rgba($black, .1);
+			margin: 0 auto;
+			max-width: 720px;
+			padding: 1rem;
+		}
+		p {
+			font-size: $font-size-sm;
+			text-align: left;
+		}
+
+		$a-size: 10rem;
+		.media-object {
+			max-width: $a-size;
+			max-height: $a-size;
+		}
+	}
+
+	section.s-skills {
+		background: gray("200");
+		padding: 3rem 0;
+
+		h2,
+		.h2 {
+			text-transform: uppercase;
+			margin-bottom: 2rem;
+		}
+
+		h3,
+		.h3 {
+			text-transform: uppercase;
+			margin-bottom: 1rem;
+		}
+
+		$card-h: 8rem;
+		$card-w: 10rem;
+		$card-sm-h: 6rem;
+		$card-sm-w: 8rem;
+		$card-box-shadow: 0 0 7px 1px rgba($black,.3);
+		$card-box-shadow-hover: 0 0 15px 1px rgba(theme-color("primary-dark"),.65);
+		$card-box-shadow-top: 0 -3px 3px 1px rgba($black,.075);
+		$card-box-shadow-top-hover: 0 -6px 6px 1px rgba(theme-color("primary-dark"),.2);
+		$card-box-shadow-bottom: 0 3px 3px 1px rgba($black,.075);
+		$card-box-shadow-bottom-hover: 0 6px 6px 1px rgba(theme-color("primary-dark"),.2);
+
+		.card {
+			border: 0 none;
+			cursor: pointer;
+			width: $card-w;
+
+			@include box-shadow($card-box-shadow);
+			@include transition($transition-base);
+
+			margin: 1rem 0 5rem;
+			@include media-breakpoint-up(lg) {
+				margin: 1rem 1rem 5rem;
+			}
+			@include media-breakpoint-up(xl) {
+				margin: 1rem 2rem 5rem;
+			}
+
+			@include hover-focus {
+				@include box-shadow($card-box-shadow-hover);
+
+				.card-body {
+					&:before {
+						@include box-shadow($card-box-shadow-top-hover);
+					}
+				}
+				.card-footer {
+					&:after {
+						@include box-shadow($card-box-shadow-bottom-hover);
+					}
+				}
+			};
+
+			.card-body {
+				background: $white;
+				height: $card-h;
+				line-height: ($card-h - $card-spacer-x * 2);
+				position: relative;
+
+				@include border-radius($border-radius $border-radius 0 0);
+
+				&:before {
+					position: absolute;
+					left: 0;
+					top: -12px;
+					background: $white;
+    			content: "";
+					width: 100%;
+					height: 2rem;
+
+					@include border-radius(50%);
+					@include box-shadow($card-box-shadow-top);
+					@include transition($transition-base);
+				}
+			}
+
+			.card-footer {
+				background: $black;
+				color: $white;
+				padding-bottom: .25rem;
+				position: relative;
+
+				@include border-radius(0 0 $border-radius $border-radius);
+
+				&:after {
+					position: absolute;
+					left: 0;
+					bottom: -12px;
+					background: $black;
+    			content: "";
+					width: 100%;
+					height: 2rem;
+
+					@include border-radius(50%);
+					@include box-shadow($card-box-shadow-bottom);
+					@include transition($transition-base);
+				}
+			}
+
+			.card-img {
+				max-height: 100%;
+				width: auto;
+				max-width: 100%;
+
+				@include border-radius(0);
+			}
+
+			.card-title {
+				font-size: ($font-size-sm + .1);
+				margin-bottom: 0;
+				position: relative;
+				z-index: 2;
+			}
+		}
+
+		.card.card-sm {
+			width: $card-sm-w;
+
+			margin: 1rem 0 3rem;
+			@include media-breakpoint-up(lg) {
+				margin: 1rem 1rem 3rem;
+			}
+			@include media-breakpoint-up(xl) {
+				margin: 1rem 2rem 3rem;
+			}
+
+			.card-body {
+				height: $card-sm-h;
+				line-height: ($card-sm-h - $card-spacer-x * 2);
+			}
+
+			.card-title {
+				font-size: ($font-size-sm - .2);
+			}
 		}
 	}
 }

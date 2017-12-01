@@ -1,13 +1,20 @@
 {
   "header": {
     "menu": {
-      "logo-title": "It's your chanse!",
+      "logo-title": "This is your chanse!",
+      "skills": "Skills",
+      "projects": "Projects",
+      "calendar": "Calendar",
       "contacts": "Contacts"
     }
   },
-  "title": "Welcome to react using react-i18next",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+  "title": "Welcome to my website.",
+  "description": "Here you can see a list of my <1>skills</1>, <3>projects</3>, my <5>calendar</5> and you can <7>contact</7> with me.",
+  "skills": "Skills",
+  "skills-sub": {
+    "best-friends": "Best Friends",
+    "js-css-helpers": "JS/CSS Helpers",
+    "html-css-js-libraries": "HTML+CSS+JS Libraries",
+    "additional": "Additional"
   }
 }

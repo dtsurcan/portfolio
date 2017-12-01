@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-import { _toCapitalize } from './../../utils';
+import { toCapitalize } from './../../utils';
 
 class SwitchLang extends Component {
 	constructor(props) {
@@ -28,11 +28,11 @@ class SwitchLang extends Component {
     return (
       <ButtonDropdown isOpen={this.state.dropdownIsOpen} toggle={this.dropdownToggle}>
         <DropdownToggle caret>
-          {_toCapitalize(i18n.language)}
+          {toCapitalize(i18n.language)}
         </DropdownToggle>
         <DropdownMenu>
           {languages.map((lang, i) => (
-            i18n.language !== lang ? <DropdownItem key={i} onClick={() => onSwitchClick(lang)}>{_toCapitalize(lang)}</DropdownItem> : ''
+            i18n.language !== lang ? <DropdownItem key={i} onClick={() => onSwitchClick(lang)}>{toCapitalize(lang)}</DropdownItem> : ''
           ))}
         </DropdownMenu>
       </ButtonDropdown>

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import 'animate.css/animate.min.css';
 import './styles/css/bootstrap.css';
 import './styles/css/index.css';
 

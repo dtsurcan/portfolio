@@ -5,6 +5,7 @@ import {
 import { translate } from 'react-i18next';
 
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+
 import SwitchLang from './../components/locales/SwitchLang';
 
 class Header extends Component {
@@ -41,8 +42,17 @@ class Header extends Component {
 
 	        <Collapse isOpen={ this.state.navbarIsOpen } navbar>
 	          <Nav className="ml-auto" navbar>
-	            <NavItem className="mr-lg-2">
-	              <NavLink exact={ true } activeClassName='active' className='nav-link' to='/contacts'>{t('header.menu.contacts')}</NavLink>
+	            <NavItem>
+                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#skills'>{t('header.menu.skills')}</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#projects'>{t('header.menu.projects')}</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#calendar'>{t('header.menu.calendar')}</NavLink>
+              </NavItem>
+              <NavItem className="mr-lg-2">
+                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#contacts'>{t('header.menu.contacts')}</NavLink>
 	            </NavItem>
               <NavItem>
                 <SwitchLang languages={ languages } onSwitchClick={ changeLanguage }></SwitchLang>

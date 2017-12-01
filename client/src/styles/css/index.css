@@ -1,12 +1,14 @@
 header.page-header {
-  position: relative; }
+  position: relative;
+  z-index: 1020; }
   header.page-header .navbar-header {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%; }
-    header.page-header .navbar-header.bg-dark {
-      background-color: rgba(52, 58, 64, 0.7) !important; }
+    @media (min-width: 768px) {
+      header.page-header .navbar-header.bg-dark {
+        background-color: rgba(52, 58, 64, 0.8) !important; } }
 
 footer.page-footer {
   background: #e9ecef; }
@@ -17,11 +19,11 @@ main.page-main {
 .home-content {
   text-align: center; }
   .home-content .jumbotron {
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: none;
     display: flex;
     align-items: center;
-    height: 30rem;
+    min-height: 20rem;
+    margin-bottom: 0;
     border-radius: 0; }
     .home-content .jumbotron .wrapper-title {
       background-color: rgba(52, 58, 64, 0.75);
@@ -30,3 +32,138 @@ main.page-main {
       margin: 0	auto;
       padding: 1rem 3rem;
       border-radius: 0.25rem; }
+  .home-content section.s-top {
+    position: relative; }
+    .home-content section.s-top .wrapper-goto {
+      position: absolute;
+      bottom: -1.75rem;
+      left: 50%;
+      z-index: 1;
+      transform: translateX(-50%); }
+      .home-content section.s-top .wrapper-goto > a {
+        background: #f8f9fa;
+        color: #046f8c;
+        cursor: pointer;
+        display: block;
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.5rem;
+        text-align: center;
+        border-radius: 50%;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease-in-out; }
+        .home-content section.s-top .wrapper-goto > a .fa {
+          vertical-align: middle; }
+        .home-content section.s-top .wrapper-goto > a:focus, .home-content section.s-top .wrapper-goto > a:hover {
+          background: #046f8c;
+          color: #fff;
+          transform: translateY(5%); }
+  .home-content section.s-about-me {
+    background: #343a40;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    min-height: 18.75rem;
+    margin-bottom: 0;
+    padding: 3rem 0;
+    position: relative;
+    box-shadow: inset 0 11px 10px -9px rgba(0, 0, 0, 0.5), inset 0 -11px 10px -9px rgba(0, 0, 0, 0.5); }
+    .home-content section.s-about-me blockquote {
+      background: rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      max-width: 720px;
+      padding: 1rem; }
+    .home-content section.s-about-me p {
+      font-size: 0.875rem;
+      text-align: left; }
+    .home-content section.s-about-me .media-object {
+      max-width: 10rem;
+      max-height: 10rem; }
+  .home-content section.s-skills {
+    background: #e9ecef;
+    padding: 3rem 0; }
+    .home-content section.s-skills h2,
+    .home-content section.s-skills .h2 {
+      text-transform: uppercase;
+      margin-bottom: 2rem; }
+    .home-content section.s-skills h3,
+    .home-content section.s-skills .h3 {
+      text-transform: uppercase;
+      margin-bottom: 1rem; }
+    .home-content section.s-skills .card {
+      border: 0 none;
+      cursor: pointer;
+      width: 10rem;
+      box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease-in-out;
+      margin: 1rem 0 5rem; }
+      @media (min-width: 992px) {
+        .home-content section.s-skills .card {
+          margin: 1rem 1rem 5rem; } }
+      @media (min-width: 1200px) {
+        .home-content section.s-skills .card {
+          margin: 1rem 2rem 5rem; } }
+      .home-content section.s-skills .card:focus, .home-content section.s-skills .card:hover {
+        box-shadow: 0 0 15px 1px rgba(4, 111, 140, 0.65); }
+        .home-content section.s-skills .card:focus .card-body:before, .home-content section.s-skills .card:hover .card-body:before {
+          box-shadow: 0 -6px 6px 1px rgba(4, 111, 140, 0.2); }
+        .home-content section.s-skills .card:focus .card-footer:after, .home-content section.s-skills .card:hover .card-footer:after {
+          box-shadow: 0 6px 6px 1px rgba(4, 111, 140, 0.2); }
+      .home-content section.s-skills .card .card-body {
+        background: #fff;
+        height: 8rem;
+        line-height: 5.5rem;
+        position: relative;
+        border-radius: 0.25rem 0.25rem 0 0; }
+        .home-content section.s-skills .card .card-body:before {
+          position: absolute;
+          left: 0;
+          top: -12px;
+          background: #fff;
+          content: "";
+          width: 100%;
+          height: 2rem;
+          border-radius: 50%;
+          box-shadow: 0 -3px 3px 1px rgba(0, 0, 0, 0.075);
+          transition: all 0.2s ease-in-out; }
+      .home-content section.s-skills .card .card-footer {
+        background: #000;
+        color: #fff;
+        padding-bottom: .25rem;
+        position: relative;
+        border-radius: 0 0 0.25rem 0.25rem; }
+        .home-content section.s-skills .card .card-footer:after {
+          position: absolute;
+          left: 0;
+          bottom: -12px;
+          background: #000;
+          content: "";
+          width: 100%;
+          height: 2rem;
+          border-radius: 50%;
+          box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.075);
+          transition: all 0.2s ease-in-out; }
+      .home-content section.s-skills .card .card-img {
+        max-height: 100%;
+        width: auto;
+        max-width: 100%;
+        border-radius: 0; }
+      .home-content section.s-skills .card .card-title {
+        font-size: 0.975rem;
+        margin-bottom: 0;
+        position: relative;
+        z-index: 2; }
+    .home-content section.s-skills .card.card-sm {
+      width: 8rem;
+      margin: 1rem 0 3rem; }
+      @media (min-width: 992px) {
+        .home-content section.s-skills .card.card-sm {
+          margin: 1rem 1rem 3rem; } }
+      @media (min-width: 1200px) {
+        .home-content section.s-skills .card.card-sm {
+          margin: 1rem 2rem 3rem; } }
+      .home-content section.s-skills .card.card-sm .card-body {
+        height: 6rem;
+        line-height: 3.5rem; }
+      .home-content section.s-skills .card.card-sm .card-title {
+        font-size: 0.675rem; }

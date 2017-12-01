@@ -1,5 +1,6 @@
 header.page-header {
   position: relative;
+  z-index: $zindex-sticky;
 
   .navbar-header {
     position: absolute;
@@ -8,7 +9,9 @@ header.page-header {
     width: 100%;
 
     &.bg-dark {
-      background-color: rgba(color('gray-dark'), .7) !important;
+      @include media-breakpoint-up(md) {
+        background-color: rgba(color('gray-dark'), .8) !important;
+      }
     }
   }
 }
