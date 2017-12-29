@@ -19,27 +19,85 @@ export function toCapitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Pan with animation
-export function handlePan(options = {}) {
+// Typer effect
+export function handleTyper(options = {}) {
   const defaults = {
-    selector: '[data-toggle="pan"]'
+    selector: '.typer'
   }
   const _options = {...defaults, ...options}
 
-  const $targets = document.querySelectorAll(_options.selector);
+  const $selectors = document.querySelectorAll(_options.selector);
 
-  $targets.forEach($target => {
-    $target.addEventListener('mousemove', (e) => {
-      const $pan = $target.querySelector('.pan')
-      if (!$pan) return;
+  $selectors.forEach($selector => {
+    let words = $selector.getAttribute('data-words')
+        words = words.split(',')
+    let delay = $selector.getAttribute('data-delay')
 
-      const $panStyle = window.getComputedStyle($pan)
+    const _makeParts = (part, word, action, callback) => {
+      if (action === 'add' || action === 'remove') {
+        if (action === 'add') {
+          part += word[part.length]
+        }
 
-      const transformOrigin = ((e.pageX - $pan.offsetLeft) / parseFloat($panStyle.width)) * 100 + '% ' +
-                              ((e.pageY - $pan.offsetTop) / parseFloat($panStyle.height)) * 100 +'%';
+        if (action === 'remove') {
+          part = part.substr(0, part.length - 1)
+        }
 
-      $pan.style.transformOrigin = transformOrigin
-    }, false)
+        $selector.innerHTML = part
+
+        let _delay = delay;
+        if (action === 'add' && part === word) {
+          action = 'remove';
+          _delay = 1500;
+        }
+        if (action === 'remove' && part === '') {
+          action = 'end';
+        }
+
+        setTimeout(() => {
+          _makeParts(part, word, action, callback)
+        }, _delay)
+      } else {
+        callback();
+      }
+    }
+
+    const _getWord = (_words) => {
+      let word = ''
+      if (!_words.length) {
+        _words = words.slice(0);
+      }
+
+      word = _words[0]
+      _makeParts('', word, 'add', () => {
+        _words.splice(0, 1)
+
+        _getWord(_words)
+      });
+    }
+
+    let _words = words.slice(0);
+    _getWord(_words)
+  })
+}
+
+// Handle cursor Animation
+export function handleCursor(options = {}) {
+  const defaults = {
+    selector: '.cursor'
+  }
+  const _options = {...defaults, ...options}
+
+  const $selectors = document.querySelectorAll(_options.selector);
+
+  $selectors.forEach($selector => {
+    let cursordisplay = $selector.getAttribute('data-cursordisplay')
+
+    $selector.innerHTML = cursordisplay
+
+    setInterval(() => {
+      $selector.classList.toggle('show-cursor')
+    }, 500)
   })
 }
 
@@ -51,34 +109,195 @@ export function handleScrollTo(options = {}) {
   }
   const _options = {...defaults, ...options}
 
-  const $targets = document.querySelectorAll(_options.selector);
+  const $selectors = document.querySelectorAll(_options.selector);
 
-  $targets.forEach($target => {
-    $target.addEventListener('click', (e) => {
-      const selector = $target.getAttribute('data-href') ? $target.getAttribute('data-href') : $target.getAttribute('href')
-      if (!selector) return;
+  const _scrollTo = (e) => {
+    const selector = e.target.getAttribute('data-href') ? e.target.getAttribute('data-href') : e.target.getAttribute('href')
+    if (!selector) return;
 
-      const target = document.querySelector(selector)
-      if (!target) return;
-      
-      const container = document.documentElement
+    const $target = document.querySelector(selector)
+    if (!$target) return;
 
-      const scrollTo = (element, to, duration) => {
-        if (duration <= 0) return;
-        var difference = to - element.scrollTop;
-        var perTick = difference / duration * 10;
+    e.preventDefault();
 
-        setTimeout(function() {
-            element.scrollTop = element.scrollTop + perTick;
-            if (element.scrollTop === to) return;
-            scrollTo(element, to, duration - 10);
-        }, 10);
+    const container = document.documentElement
+
+    const _makeScrollTo = (element, to, duration) => {
+      if (duration <= 0) return;
+      var difference = to - element.scrollTop;
+      var perTick = difference / duration * 10;
+
+      setTimeout(function() {
+          element.scrollTop = element.scrollTop + perTick;
+          if (element.scrollTop === to) return;
+          _makeScrollTo(element, to, duration - 10);
+      }, 10);
+    }
+
+    _makeScrollTo(container, $target.offsetTop, _options.duration);
+  }
+
+  $selectors.forEach($selector => {
+    $selector.addEventListener('click', _scrollTo, false)
+  })
+
+  _log('Init: handleScrollTo')
+}
+
+// SpyScroll Navigation
+export function handleSpyNavScroll(options = {}) {
+  const defaults = {
+    selector: '[data-spy="nav-scroll"]',
+    offset: 0,
+    parent: window,
+    target: ''
+  }
+
+  const $selectors = document.querySelectorAll(defaults.selector)
+
+  $selectors.forEach($selector => {
+    const attrs = {
+      offset: $selector.getAttribute('data-offset') ? $selector.getAttribute('data-offset') : defaults.offset,
+      parent: $selector.getAttribute('data-parent') ? $selector.getAttribute('data-parent') : defaults.parent,
+      target: $selector.getAttribute('data-target') ? $selector.getAttribute('data-target') : defaults.target
+    }
+
+    options = {...options, ...attrs}
+    const _options = {...defaults, ...options}
+
+    if (!_options.target) return
+
+    const $menu = document.querySelector(_options.target)
+    const $parent = _options.parent === window ? window : document.querySelector(_options.parent)
+    const $container = $parent === window ? document.documentElement : $parent
+
+    let items = []
+    const $menuItems = $menu.querySelectorAll('a')
+    $menuItems.forEach($item => {
+      items[items.length] = $item.getAttribute('data-href') ? $item.getAttribute('data-href') : $item.getAttribute('href')
+    })
+
+    if (!items.length) return;
+
+    const _scrollEvent = (e) => {
+      items.forEach(item => {
+        let $item = document.querySelector(item)
+
+        // Skip if element is not found
+        if (!$item) return;
+
+        const itemH = $item.offsetHeight
+        const itemT = $item.offsetTop
+
+        // Skip if element is not on screen
+        if ($container.scrollTop > (itemH + itemT - _options.offset)) return;
+
+        // Get position current element
+        let difference = itemT - $container.scrollTop
+
+        if (difference < _options.offset) {
+          let $menuItem = $menu.querySelector('a[data-href="'+item+'"]') ? $menu.querySelector('a[data-href="'+item+'"]') : $menu.querySelector('a[href="'+item+'"]')
+
+          // if state is changed
+          if (!$menuItem.classList.contains('active')) {
+            // clear active class
+            $menuItems.forEach($_menuItem => {
+              $_menuItem.classList.remove('active')
+            })
+
+            // add active class to current
+            $menuItem.classList.add('active')
+          }
+        }
+      })
+    }
+
+    $parent.addEventListener('scroll', _scrollEvent, false)
+  })
+
+  _log('Init: handleSpyScroll')
+}
+
+// SpyScroll Item
+export function handleSpyItemScroll(options = {}) {
+  const defaults = {
+    selector: '[data-spy="item-scroll"]',
+    offset: 0,
+    parent: window,
+    item: '.card',
+    callback: ''
+  }
+
+  const callbacks = {
+    loadingProgress: ($item) => {
+      const value = $item.getAttribute('data-value')
+      const $bar = $item.querySelector('.progress-bar')
+
+      $bar.style.width = value + '%'
+    },
+    loadingSkills: ($item) => {
+      $item.classList.add('animated', 'bounce')
+    }
+  }
+
+  const offsetTop = ($el) => {
+    var rect = $el.getBoundingClientRect(),
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop
+
+    return rect.top + scrollTop
+  }
+
+  const $selectors = document.querySelectorAll(defaults.selector)
+
+  $selectors.forEach($selector => {
+    const attrs = {
+      offset: $selector.getAttribute('data-offset') ? $selector.getAttribute('data-offset') : defaults.offset,
+      parent: $selector.getAttribute('data-parent') ? $selector.getAttribute('data-parent') : defaults.parent,
+      item: $selector.getAttribute('data-item') ? $selector.getAttribute('data-item') : defaults.target,
+      callback: $selector.getAttribute('data-callback') ? $selector.getAttribute('data-callback') : defaults.callback
+    }
+
+    options = {...options, ...attrs}
+    const _options = {...defaults, ...options}
+
+    const $parent = _options.parent === window ? window : document.querySelector(_options.parent)
+    const $container = $parent === window ? document.documentElement : $parent
+    const $items = $selector.querySelectorAll(_options.item)
+
+    const _scrollEvent = (e) => {
+      const _applyCallback = $item => {
+        // Skip if element is not found
+        if (!$item) return;
+
+        if ($item.getAttribute('data-is-animated')) return;
+
+        const itemH = $item.offsetHeight
+        const itemT = offsetTop($item)
+
+        let difference = $container.scrollTop + $container.clientHeight - _options.offset - (itemT + itemH)
+        if (difference > 0) {
+          if (_options.callback) {
+
+            callbacks[_options.callback]($item)
+
+            $item.setAttribute('data-is-animated', true)
+          }
+        }
       }
 
-      scrollTo(container, target.offsetTop, _options.duration);
+      if ($items.length > 1) {
+        [...$items].forEach($item => {
+          _applyCallback($item)
+        })
+      } else {
+        _applyCallback($items)
+      }
+    }
 
-    }, false)
+    $parent.addEventListener('scroll', _scrollEvent, false)
   })
+
+  _log('Init: handleSpyScroll')
 }
 
 // Get antispam link

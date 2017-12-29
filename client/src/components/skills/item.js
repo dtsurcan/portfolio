@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Tooltip, Card, CardFooter, CardBody, CardImg, CardTitle } from 'reactstrap';
+import {
+  Tooltip,
+  Card,
+  CardFooter,
+  CardBody,
+  CardImg,
+  CardTitle
+} from 'reactstrap';
 
 class SkillItem extends Component {
   constructor(props) {
@@ -24,7 +31,7 @@ class SkillItem extends Component {
 
     return (
       <div>
-        <Card id={ "item-" + id} className={size ? "card-" + size : ''}>
+        <Card id={ "item-" + id} className={size ? "skill-item card-" + size : 'skill-item'}>
           <CardBody>
             <CardImg src={ srcLogo } alt={ altLogo } />
           </CardBody>

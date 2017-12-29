@@ -14,4 +14,11 @@ header.page-header {
       }
     }
   }
+
+  &.sticky {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: $zindex-fixed;
+  }
 }

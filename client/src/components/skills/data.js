@@ -21,10 +21,8 @@ export function SkillsData( t ) {
           title: "HTML 5",
           description: {
             __html:
-            `<div>
-              <strong>HTML5</strong> (HyperText Markup Language, version 5) — язык для структурирования и представления содержимого всемирной паутины.<br />
-              <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank">Wiki</a>
-            </div>`
+              `<strong>HTML5</strong> (HyperText Markup Language, version 5) — язык для структурирования и представления содержимого всемирной паутины.<br />
+              <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank">Wiki</a>`
           }
         },
         { id: 2,
@@ -33,11 +31,9 @@ export function SkillsData( t ) {
           title: "CSS 3",
           description: {
             __html:
-            `<div>
-              <strong>CSS3</strong> (Cascading Style Sheets 3 — каскадные таблицы стилей третьего поколения) — активно разрабатываемая спецификация CSS.
+              `<strong>CSS3</strong> (Cascading Style Sheets 3 — каскадные таблицы стилей третьего поколения) — активно разрабатываемая спецификация CSS.
               Представляет собой формальный язык, реализованный с помощью языка разметки.<br />
-              <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets#CSS_3" target="_blank">Wiki</a>
-            </div>`
+              <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets#CSS_3" target="_blank">Wiki</a>`
           }
         },
         { id: 3,
@@ -46,11 +42,9 @@ export function SkillsData( t ) {
           title: "JavaScript",
           description: {
             __html:
-            `<div>
-              <strong>JavaScript</strong> — мультипарадигменный язык программирования.
+              `<strong>JavaScript</strong> — мультипарадигменный язык программирования.
               Поддерживает объектно-ориентированный, императивный и функциональный стили.<br />
-              <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">Wiki</a>
-            </div>`
+              <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">Wiki</a>`
           }
         }
       ]
@@ -64,10 +58,8 @@ export function SkillsData( t ) {
           title: "jQuery",
           description: {
             __html:
-            `<div>
-              <strong>jQuery</strong> — библиотека JavaScript, фокусирующаяся на взаимодействии JavaScript и HTML. <br />
-              <a href="https://jquery.com/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              `<strong>jQuery</strong> — библиотека JavaScript, фокусирующаяся на взаимодействии JavaScript и HTML. <br />
+              <a href="https://jquery.com/" target="_blank">Оффициальный сайт</a>`
           }
         },
         { id: 5,
@@ -77,10 +69,8 @@ export function SkillsData( t ) {
           title: "CoffeeScript",
           description: {
             __html:
-            `<div>
-              <strong>CoffeeScript</strong> — язык программирования, транслируемый в JavaScript. <br />
-              <a href="http://coffeescript.org/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              `<strong>CoffeeScript</strong> — язык программирования, транслируемый в JavaScript. <br />
+              <a href="http://coffeescript.org/" target="_blank">Оффициальный сайт</a>`
           }
         },
         { id: 6,
@@ -90,11 +80,9 @@ export function SkillsData( t ) {
           title: "SASS",
           description: {
             __html:
-            `<div>
-              <strong>Sass</strong> (Syntactically Awesome Stylesheets) — модуль, включенный в Haml.
+              `<strong>Sass</strong> (Syntactically Awesome Stylesheets) — модуль, включенный в Haml.
               Sass — это метаязык на основе CSS, предназначенный для увеличения уровня абстракции CSS кода и упрощения файлов каскадных таблиц стилей. <br />
-              <a href="http://sass-lang.com/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              <a href="http://sass-lang.com/" target="_blank">Оффициальный сайт</a>`
           }
         },
         { id: 7,
@@ -104,11 +92,9 @@ export function SkillsData( t ) {
           title: "LESS",
           description: {
             __html:
-            `<div>
-              <strong>LESS</strong> (Leaner Style Sheets) — это динамический язык стилей, который разработал Alexis Sellier.
+              `<strong>LESS</strong> (Leaner Style Sheets) — это динамический язык стилей, который разработал Alexis Sellier.
               Он создан под влиянием языка стилей Sass, и, в свою очередь, оказал влияние на его новый синтаксис «SCSS», в котором также использован синтаксис, являющийся расширением СSS. <br />
-              <a href="http://lesscss.org/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              <a href="http://lesscss.org/" target="_blank">Оффициальный сайт</a>`
           }
         }
       ]
@@ -122,10 +108,8 @@ export function SkillsData( t ) {
           title: "Bootstrap 4",
           description: {
             __html:
-            `<div>
-              <strong>Bootstrap</strong> (Twitter Bootstrap) — свободный набор инструментов для создания сайтов и веб-приложений. <br />
-              <a href="http://getbootstrap.com/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              `<strong>Bootstrap</strong> (Twitter Bootstrap) — свободный набор инструментов для создания сайтов и веб-приложений. <br />
+              <a href="http://getbootstrap.com/" target="_blank">Оффициальный сайт</a>`
           }
         },
         { id: 9,
@@ -135,10 +119,8 @@ export function SkillsData( t ) {
           title: "Foundation 6",
           description: {
             __html:
-            `<div>
-              <strong>Foundation</strong> (Foundation Zurb) — свободный набор инструментов для создания сайтов и веб-приложений. <br />
-              <a href="https://foundation.zurb.com/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              `<strong>Foundation</strong> (Foundation Zurb) — свободный набор инструментов для создания сайтов и веб-приложений. <br />
+              <a href="https://foundation.zurb.com/" target="_blank">Оффициальный сайт</a>`
           }
         }
       ]
@@ -152,10 +134,8 @@ export function SkillsData( t ) {
           title: "npm",
           description: {
             __html:
-            `<div>
-              <strong>npm</strong> (Node.js Package Manager) — менеджер пакетов, входящий в состав Node.js. <br />
-              <a href="https://www.npmjs.com/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              `<strong>npm</strong> (Node.js Package Manager) — менеджер пакетов, входящий в состав Node.js. <br />
+              <a href="https://www.npmjs.com/" target="_blank">Оффициальный сайт</a>`
           }
         },
         { id: 11,
@@ -165,10 +145,8 @@ export function SkillsData( t ) {
           title: "Bower",
           description: {
             __html:
-            `<div>
-              <strong>Bower</strong> - это система управления пакетами в программировании на стороне клиента. <br />
-              <a href="https://bower.io/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              `<strong>Bower</strong> - это система управления пакетами в программировании на стороне клиента. <br />
+              <a href="https://bower.io/" target="_blank">Оффициальный сайт</a>`
           }
         },
         { id: 12,
@@ -178,10 +156,8 @@ export function SkillsData( t ) {
           title: "Git",
           description: {
             __html:
-            `<div>
-              <strong>Git</strong> — распределённая система управления версиями. <br />
-              <a href="https://git-scm.com/" target="_blank">Оффициальный сайт</a>
-            </div>`
+              `<strong>Git</strong> — распределённая система управления версиями. <br />
+              <a href="https://git-scm.com/" target="_blank">Оффициальный сайт</a>`
           }
         }
       ]

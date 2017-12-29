@@ -4,6 +4,13 @@
 
 @import "./variables";
 
+@import './animations';
+
+// components
+@import './components/cursor';
+@import './components/progress';
+@import './components/skill';
+
 // Layout
 @import './layout/header';
 @import './layout/footer';

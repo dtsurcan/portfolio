@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import {
-  NavLink
-} from 'react-router-dom';
 import { translate } from 'react-i18next';
 
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+import { Collapse, Nav, Navbar, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 
 import SwitchLang from './../components/locales/SwitchLang';
 
@@ -34,30 +31,33 @@ class Header extends Component {
     const languages = [ 'ru', 'en', 'de' ]
 
     return (
-      <header className="page-header">
+      <header className="page-header sticky">
 	      <Navbar dark expand="md" className="bg-dark navbar-header">
-	        <NavLink exact={ true } className='navbar-brand' to='/'>{t('header.menu.logo-title')}</NavLink>
+	        <NavLink className='navbar-brand' href='/'>{t('header.menu.logo-title')}</NavLink>
 
 	        <NavbarToggler onClick={ this.navbarToggle } />
 
-	        <Collapse isOpen={ this.state.navbarIsOpen } navbar>
-	          <Nav className="ml-auto" navbar>
+	        <Collapse isOpen={ this.state.navbarIsOpen } navbar id="main-header-menu">
+	          <Nav navbar className="ml-auto">
+              <NavItem>
+                <NavLink className='nav-link active' href='#home' data-toggle="scroll-to">{t('header.menu.home')}</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className='nav-link' href='#about-me' data-toggle="scroll-to">{t('header.menu.about')}</NavLink>
+              </NavItem>
 	            <NavItem>
-                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#skills'>{t('header.menu.skills')}</NavLink>
+                <NavLink className='nav-link' href='#skills' data-toggle="scroll-to">{t('header.menu.skills')}</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#projects'>{t('header.menu.projects')}</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#calendar'>{t('header.menu.calendar')}</NavLink>
+                <NavLink className='nav-link' href='#projects' data-toggle="scroll-to">{t('header.menu.projects')}</NavLink>
               </NavItem>
               <NavItem className="mr-lg-2">
-                <NavLink exact={ true } activeClassName='active' className='nav-link' to='#contacts'>{t('header.menu.contacts')}</NavLink>
+                <NavLink className='nav-link' href='#contacts' data-toggle="scroll-to">{t('header.menu.contacts')}</NavLink>
 	            </NavItem>
               <NavItem>
                 <SwitchLang languages={ languages } onSwitchClick={ changeLanguage }></SwitchLang>
               </NavItem>
-	          </Nav>
+            </Nav>
 	        </Collapse>
 	      </Navbar>
 	    </header>
