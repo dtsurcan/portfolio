@@ -4,7 +4,6 @@ import {
   Jumbotron,
   Row,
   Col,
-  Media,
   Progress,
   Badge } from 'reactstrap';
 import { translate/*, Trans*/ } from 'react-i18next';
@@ -21,9 +20,12 @@ import { _log,
 import SkillItem from './../components/skills/item';
 import { SkillsData } from './../components/skills/data';
 
-import bgTopSrc      from './../images/home-top3.jpg';
+import ProjectItem from './../components/projects/item';
+import { ProjectsData } from './../components/projects/data';
+
+import bgTopSrc      from './../images/home-top4.jpg';
 import upworkLogo   from './../images/logos/upwork-logo.png';
-import meAvatar   from './../images/me.jpg';
+import manInSuitSrc   from './../images/man-in-suit.png';
 import bgExpSrc   from './../images/experience.jpg';
 
 class Home extends Component {
@@ -63,6 +65,7 @@ class Home extends Component {
     const { t } = this.props;
 
     const skills = SkillsData(t);
+    const projects = ProjectsData(t);
 
     console.log(getEmailLink())
 
@@ -93,54 +96,49 @@ class Home extends Component {
         </section>
         {/* /section.s-top */}
 
-        <section className="s-about-me" id="about-me">
+        <section className="s-about-me" id="about-me" data-spy="item-scroll" data-item=".progress" data-offset="30" data-callback="loadingProgress">
           <Container>
             <div className="inner">
-              <blockquote data-spy="item-scroll" data-item=".progress" data-offset="30" data-callback="loadingProgress">
-                <Media>
-                  <Media left className="mr-4 align-self-top">
-                    <Media object src={ meAvatar } alt="Dmitry" />
-                  </Media>
-                  <Media body className="align-self-center">
-                    <h6>Know About me</h6>
-                    <h2>I AM A WEB DEVELOPER</h2>
-                    <p>Senior Front-end developer with more than 10 years of professional experience.</p>
-                    <p className="mb-0">Perfectionist, who is very sensitive regarding the product quality and is deadline oriented. I'm experienced with modern Front-end web development workflows, I'm able to suggest new and better ways of doing things and can make sure you website ends up being awesome.</p>
+              <img src={ manInSuitSrc } alt="Man in suit" className="man-bg" />
 
-                    <hr />
+              <blockquote>
+                <h6>Know About me</h6>
+                <h2>I AM A WEB DEVELOPER</h2>
+                <p>Senior Front-end developer with more than 10 years of professional experience.</p>
+                <p className="mb-0">Perfectionist, who is very sensitive regarding the product quality and is deadline oriented. I'm experienced with modern Front-end web development workflows, I'm able to suggest new and better ways of doing things and can make sure you website ends up being awesome.</p>
 
-                    <p><img src={ upworkLogo } alt="Upwork" style={{'height': '25px'}}/> Upwork tests:</p>
+                <hr />
 
-                    <div className="mb-3">
-                      <label>HTML5 <Badge color="success">Top 10%</Badge>:</label>
-                      <Progress data-value="91" />
-                    </div>
+                <p><img src={ upworkLogo } alt="Upwork" style={{'height': '25px'}}/> Upwork tests:</p>
 
-                    <div className="mb-3">
-                      <label>CSS <Badge color="success">Top 10%</Badge>:</label>
-                      <Progress data-value="96" />
-                    </div>
+                <div className="mb-3">
+                  <label>HTML5 <Badge color="success">Top 10%</Badge>:</label>
+                  <Progress data-value="91" />
+                </div>
 
-                    <div className="mb-3">
-                      <label>jQuery <Badge color="success">Top 20%</Badge>:</label>
-                      <Progress data-value="88" />
-                    </div>
+                <div className="mb-3">
+                  <label>CSS <Badge color="success">Top 10%</Badge>:</label>
+                  <Progress data-value="96" />
+                </div>
 
-                    <div className="mb-3">
-                      <label>Bootstrap <Badge color="success">Top 20%</Badge>:</label>
-                      <Progress data-value="80" />
-                    </div>
+                <div className="mb-3">
+                  <label>jQuery <Badge color="success">Top 20%</Badge>:</label>
+                  <Progress data-value="88" />
+                </div>
 
-                    <div className="mb-3">
-                      <label>PHP5 <Badge color="success">Top 10%</Badge>:</label>
-                      <Progress data-value="95" />
-                    </div>
+                <div className="mb-3">
+                  <label>Bootstrap <Badge color="success">Top 20%</Badge>:</label>
+                  <Progress data-value="80" />
+                </div>
 
-                    <p className="mb-0">
-                      <a href="https://www.upwork.com/freelancers/web-developer_~~2795bf045a4c8da1" target="_blank" rel="noopener noreferrer">profile link</a>
-                    </p>
-                  </Media>
-                </Media>
+                <div className="mb-3">
+                  <label>PHP5 <Badge color="success">Top 10%</Badge>:</label>
+                  <Progress data-value="95" />
+                </div>
+
+                <p className="mb-0">
+                  <a href="https://www.upwork.com/freelancers/web-developer_~~2795bf045a4c8da1" target="_blank" rel="noopener noreferrer">profile link</a>
+                </p>
               </blockquote>
             </div>
           </Container>
@@ -151,7 +149,7 @@ class Home extends Component {
           <Parallax bgImage={ bgExpSrc } strength={ 400 }>
             <Container>
               <div className="inner">
-                <h2 id="header-skills">{t('skills')}</h2>
+                <h2 id="header-skills" className="text-center">{t('skills')}</h2>
 
                 { skills.map((part, i) => {
                   const items = part.items;
@@ -165,7 +163,6 @@ class Home extends Component {
 
                   return (
                     <div key={i}>
-                      <h3 className="h5">{part.title}</h3>
                       <Row className="justify-content-center">
                         { SkillItems }
                       </Row>
@@ -177,6 +174,34 @@ class Home extends Component {
           </Parallax>
         </section>
         {/* /section.s-skills */}
+
+        <section className="s-projects" id="projects" data-spy="item-scroll" data-item=".card" data-offset="30" data-callback="loadingSkills">
+          <Container>
+            <div className="inner">
+              <h2 id="header-skills" className="text-center">{t('projects')}</h2>
+
+              { projects.map((part, i) => {
+                const items = part.items;
+                const ProjectsItems = items.map((item, i) => {
+                  return (
+                    <Col sm={{ size: 'auto' }} key={i}>
+                      <ProjectItem {...item}></ProjectItem>
+                    </Col>
+                  )
+                })
+
+                return (
+                  <div key={i}>
+                    <Row className="justify-content-center">
+                      { ProjectsItems }
+                    </Row>
+                  </div>
+                )
+              })}
+            </div>
+          </Container>
+        </section>
+        {/* /section.s-projects */}
 
       </div>
     );

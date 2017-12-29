@@ -91,39 +91,35 @@
 
 	$mw: 60rem;
 	section.s-about-me {
-		background: gray("800");
+		background: gray("900");
 		color: $white;
 		display: flex;
 		align-items: center;
 		margin-bottom: 0;
 		position: relative;
 
-		@include box-shadow(inset 0 11px 10px -9px rgba($black, .5),
-												inset 0 -11px 10px -9px rgba($black, .5));
-
 		.inner {
-			padding: 3rem 0;
+			position: relative;
+		}
+
+		.man-bg {
+			position: absolute;
+			bottom: 0;
+			left: 0;
 		}
 
 		blockquote {
-			background: rgba($black, .1);
-			margin: 0 auto;
 			max-width: $mw;
 			padding: 3rem 6rem;
-		}
-
-		$a-size: 15rem;
-		.media-object {
-			max-width: $a-size;
-			max-height: $a-size;
+			margin: 0;
+			margin-left: 400px;
 		}
 	}
 
 	section.s-skills {
 		.inner {
 			color: $white;
-			padding: 3rem 0;
-			text-align: center;
+			padding: 3rem 0 6rem;
 		}
 
 		h2,
@@ -136,6 +132,26 @@
 		.h3 {
 			text-transform: uppercase;
 			margin-bottom: 1rem;
+		}
+	}
+
+	section.s-projects {
+		background: gray("900");
+		color: $white;
+		display: flex;
+		align-items: center;
+		margin-bottom: 0;
+		position: relative;
+
+		.inner {
+			padding: 3rem 0 6rem;
+			position: relative;
+		}
+
+		h2,
+		.h2 {
+			text-transform: uppercase;
+			margin-bottom: 2rem;
 		}
 	}
 }

@@ -19,6 +19,13 @@ export function toCapitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+export function offsetTop($el) {
+  var rect = $el.getBoundingClientRect(),
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop
+
+  return rect.top + scrollTop
+}
+
 // Typer effect
 export function handleTyper(options = {}) {
   const defaults = {
@@ -134,7 +141,7 @@ export function handleScrollTo(options = {}) {
       }, 10);
     }
 
-    _makeScrollTo(container, $target.offsetTop, _options.duration);
+    _makeScrollTo(container, offsetTop($target), _options.duration);
   }
 
   $selectors.forEach($selector => {
@@ -187,10 +194,10 @@ export function handleSpyNavScroll(options = {}) {
         if (!$item) return;
 
         const itemH = $item.offsetHeight
-        const itemT = $item.offsetTop
+        const itemT = offsetTop($item)
 
         // Skip if element is not on screen
-        if ($container.scrollTop > (itemH + itemT - _options.offset)) return;
+        if (($container.scrollTop - _options.offset) > (itemH + itemT)) return;
 
         // Get position current element
         let difference = itemT - $container.scrollTop
@@ -240,12 +247,6 @@ export function handleSpyItemScroll(options = {}) {
     }
   }
 
-  const offsetTop = ($el) => {
-    var rect = $el.getBoundingClientRect(),
-        scrollTop = window.pageYOffset || document.documentElement.scrollTop
-
-    return rect.top + scrollTop
-  }
 
   const $selectors = document.querySelectorAll(defaults.selector)
 
@@ -263,6 +264,13 @@ export function handleSpyItemScroll(options = {}) {
     const $parent = _options.parent === window ? window : document.querySelector(_options.parent)
     const $container = $parent === window ? document.documentElement : $parent
     const $items = $selector.querySelectorAll(_options.item)
+
+    // $items.forEach($item => {
+    //   const itemH = $item.offsetHeight
+    //   const itemT = offsetTop($item)
+    //
+    //   console.log($item, itemT + itemH);
+    // })
 
     const _scrollEvent = (e) => {
       const _applyCallback = $item => {

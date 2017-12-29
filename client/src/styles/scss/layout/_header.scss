@@ -10,7 +10,7 @@ header.page-header {
 
     &.bg-dark {
       @include media-breakpoint-up(md) {
-        background-color: rgba(color('gray-dark'), .8) !important;
+        background-color: rgba($black, .7) !important;
       }
     }
   }
