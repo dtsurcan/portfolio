@@ -3,9 +3,7 @@ import {
   Container,
   Jumbotron,
   Row,
-  Col,
-  Progress,
-  Badge } from 'reactstrap';
+  Col } from 'reactstrap';
 import { translate, Trans } from 'react-i18next';
 import { Parallax } from 'react-parallax';
 
@@ -23,6 +21,9 @@ import { SkillsData } from './../components/skills/data';
 
 import ProjectItem from './../components/projects/item';
 import { ProjectsData } from './../components/projects/data';
+
+import TestItem from './../components/tests/item';
+import { TestsData } from './../components/tests/data';
 
 import bgTopSrc      from './../images/home.jpg';
 import upworkLogo   from './../images/logos/upwork-logo.png';
@@ -49,14 +50,12 @@ class Home extends Component {
 
   // Handle load event function
   handleLoadHome() {
-
     // Set min height for inner main content
     const handletMinHeight = () => {
       _log('Handle minHeight');
 
       const $sTop = document.querySelector('section.s-top .jumbotron');
-      let h = window.innerHeight //(window.innerHeight - 200) > 400 ? (window.innerHeight - 200) : 400
-      $sTop.style.minHeight = h + 'px';
+      $sTop.style.minHeight = window.innerHeight + 'px';
     };
 
     // Call function
@@ -68,6 +67,7 @@ class Home extends Component {
 
     const skills = SkillsData(t)
     const projects = ProjectsData(t)
+    const tests = TestsData(t)
 
     const email = "mailto:" + getEmailLink()
 
@@ -103,7 +103,7 @@ class Home extends Component {
         <section className="s-about-me" id="about-me" data-spy="item-scroll" data-item=".progress" data-offset="30" data-callback="loadingProgress">
           <Container>
             <div className="inner">
-              <img src={ manInSuitSrc } alt="Man in suit" className="man-bg d-none d-lg-block" />
+              <img src={ manInSuitSrc } alt="Man in suit" className="man-bg d-none d-lg-block" style={{ maxWidth: '400px' }} />
 
               <blockquote>
                 <h6>{t('know-about-me')}</h6>
@@ -115,30 +115,14 @@ class Home extends Component {
 
                 <p><img src={ upworkLogo } alt="Upwork" style={{'height': '25px'}}/> {t('upwork-tests')}</p>
 
-                <div className="mb-3">
-                  <label>HTML5 <Badge color="success">Top 10%</Badge>:</label>
-                  <Progress data-value="91" />
-                </div>
-
-                <div className="mb-3">
-                  <label>CSS <Badge color="success">Top 10%</Badge>:</label>
-                  <Progress data-value="96" />
-                </div>
-
-                <div className="mb-3">
-                  <label>jQuery <Badge color="success">Top 20%</Badge>:</label>
-                  <Progress data-value="88" />
-                </div>
-
-                <div className="mb-3">
-                  <label>Bootstrap <Badge color="success">Top 20%</Badge>:</label>
-                  <Progress data-value="80" />
-                </div>
-
-                <div className="mb-3">
-                  <label>PHP5 <Badge color="success">Top 10%</Badge>:</label>
-                  <Progress data-value="95" />
-                </div>
+                {/* Tests */}
+                { tests.map((test, i) => {
+                  return (
+                    <div key={i} className="mb-3">
+                      <TestItem {...test}></TestItem>
+                    </div>
+                  )
+                })}
 
                 <p className="mb-0">
                   <a href="https://www.upwork.com/freelancers/web-developer_~~2795bf045a4c8da1" target="_blank" rel="noopener noreferrer">{t('profile-link')}</a>
@@ -155,24 +139,16 @@ class Home extends Component {
               <div className="inner">
                 <h2 id="header-skills" className="text-center">{t('skills')}</h2>
 
-                { skills.map((part, i) => {
-                  const items = part.items;
-                  const SkillItems = items.map((item, i) => {
+                <Row className="justify-content-center">
+                  {/* Skills */}
+                  { skills.map((skill, i) => {
                     return (
                       <Col sm={{ size: 'auto' }} key={i}>
-                        <SkillItem {...item}></SkillItem>
+                        <SkillItem {...skill}></SkillItem>
                       </Col>
                     )
-                  })
-
-                  return (
-                    <div key={i}>
-                      <Row className="justify-content-center">
-                        { SkillItems }
-                      </Row>
-                    </div>
-                  )
-                })}
+                  })}
+                </Row>
               </div>
             </Container>
           </Parallax>
@@ -184,24 +160,16 @@ class Home extends Component {
             <div className="inner">
               <h2 id="header-projects" className="text-center">{t('projects')}</h2>
 
-              { projects.map((part, i) => {
-                const items = part.items;
-                const ProjectsItems = items.map((item, i) => {
+              <Row className="justify-content-center">
+                {/* Projects */}
+                { projects.map((project, i) => {
                   return (
                     <Col sm={{ size: 'auto' }} key={i}>
-                      <ProjectItem {...item}></ProjectItem>
+                      <ProjectItem {...project}></ProjectItem>
                     </Col>
                   )
-                })
-
-                return (
-                  <div key={i}>
-                    <Row className="justify-content-center">
-                      { ProjectsItems }
-                    </Row>
-                  </div>
-                )
-              })}
+                })}
+              </Row>
             </div>
           </Container>
         </section>

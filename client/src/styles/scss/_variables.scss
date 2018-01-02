@@ -8,11 +8,13 @@
 // Color system
 //
 
-$primary: #61dafb;
+$primary: #f18c1d; //#61dafb;
 $primary-dark: darken($primary, 40%);
+$body-bg: #20303E;
 $theme-colors: (
   "primary": $primary,
-  "primary-dark": $primary-dark
+  "primary-dark": $primary-dark,
+  "body-bg": $body-bg
 );
 
 // Options
@@ -25,7 +27,7 @@ $enable-shadows:            true;
 // Fonts
 //
 
-$font-family-sans-serif:      Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-sans-serif:      Oswald, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 //
 // Montserrat weight map:

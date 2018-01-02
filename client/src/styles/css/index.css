@@ -45,7 +45,7 @@
         width: 12rem;
         height: 12rem; } }
     .skill-item svg path {
-      stroke: #61dafb;
+      stroke: #f18c1d;
       fill: none;
       transition: all 0.2s ease-in-out; }
   .skill-item h4 {
@@ -62,9 +62,9 @@
     align-self: center;
     align-items: center;
     display: flex;
-    padding: 1rem 1.5rem; }
+    padding: 1rem 2rem; }
   .skill-item:focus svg path, .skill-item:hover svg path {
-    fill: #61dafb; }
+    fill: #f18c1d; }
   .skill-item:focus h4, .skill-item:hover h4 {
     color: #000; }
 
@@ -114,7 +114,7 @@
       .project-item .content > a:focus, .project-item .content > a:hover {
         text-decoration: underline; }
   .project-item:focus, .project-item:hover {
-    border-color: #61dafb; }
+    border-color: #f18c1d; }
     .project-item:focus > img, .project-item:hover > img {
       opacity: .1;
       transform: scale(1.1); }
@@ -161,7 +161,7 @@ main.page-main {
   padding: 2rem 0;
   border-radius: 0; }
   .home-content .jumbotron .wrapper-content {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(32, 48, 62, 0.3);
     max-width: 60rem;
     margin: 0 auto;
     padding: 3rem 15px; }
@@ -176,9 +176,9 @@ main.page-main {
       font-size: 1.25rem;
       margin-bottom: .5rem; }
       .home-content .jumbotron .wrapper-content .content span.sub-text b {
-        border-bottom: 2px solid #61dafb; }
+        border-bottom: 2px solid #f18c1d; }
     .home-content .jumbotron .wrapper-content .content h1 {
-      color: #61dafb;
+      color: #f18c1d;
       font-size: 30px;
       line-height: 30px;
       font-weight: 400; }
@@ -197,19 +197,23 @@ main.page-main {
         line-height: 30px;
         position: relative;
         margin-right: 10px; }
+        @media (min-width: 576px) {
+          .home-content .jumbotron .wrapper-content .content h1 span {
+            font-size: 70px;
+            line-height: 70px; } }
         @media (min-width: 992px) {
           .home-content .jumbotron .wrapper-content .content h1 span {
             font-size: 50px;
             line-height: 50px;
             margin-right: 0;
             top: -12px;
-            left: -20px;
+            left: -8px;
             transform: rotate(-90deg); } }
     .home-content .jumbotron .wrapper-content .content h2 {
-      color: #61dafb;
+      color: #f18c1d;
       font-size: 1rem;
       font-weight: 400;
-      border-left: 3px solid #61dafb;
+      border-left: 3px solid #f18c1d;
       padding-left: 10px;
       margin-top: 20px; }
       @media (min-width: 992px) {
@@ -241,7 +245,7 @@ main.page-main {
         border-radius: 3px; }
 
 .home-content section.s-about-me {
-  background: #212529;
+  background: #20303E;
   color: #fff;
   display: flex;
   align-items: center;
@@ -277,7 +281,7 @@ main.page-main {
   margin-bottom: 1rem; }
 
 .home-content section.s-projects {
-  background: #212529;
+  background: #20303E;
   color: #fff;
   margin-bottom: 0; }
   .home-content section.s-projects .inner {
@@ -288,7 +292,6 @@ main.page-main {
     margin-bottom: 2rem; }
 
 .home-content section.s-contacts {
-  background: #212529;
   color: #fff;
   margin-bottom: 0; }
   .home-content section.s-contacts .inner {
