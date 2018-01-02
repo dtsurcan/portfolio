@@ -5,8 +5,8 @@ class Footer extends Component {
   render() {
     return (
 	    <footer className="page-footer">
-	    	<Container fluid={ true }>
-	    		<p className="mb-0 py-2">footer</p>
+	    	<Container>
+	    		<p className="mb-0 py-2 text-right">Copyright © 2017 DTsurcan. All Rights Reserved.</p>
 	    	</Container>
 	    </footer>
     );

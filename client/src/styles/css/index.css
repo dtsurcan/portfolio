@@ -63,16 +63,15 @@
   max-width: 100%;
   background: none;
   border: 3px solid #343a40;
-  border-radius: 10px;
   overflow: hidden;
   position: relative;
   margin-bottom: 30px;
+  border-radius: 10px;
   transition: all ease 1s; }
   .project-item > img {
     transition: all ease 1s; }
   .project-item .card-body {
     background: rgba(0, 0, 0, 0.9);
-    border-radius: 6px;
     position: absolute;
     top: 0;
     left: 0;
@@ -80,6 +79,7 @@
     height: 100%;
     opacity: 0;
     padding: 0;
+    border-radius: 6px;
     transition: all ease 1s; }
     .project-item .card-body span.badge {
       font-weight: 300; }
@@ -126,7 +126,9 @@ header.page-header {
     z-index: 1030; }
 
 footer.page-footer {
-  background: #e9ecef; }
+  background: #212529;
+  color: #adb5bd;
+  padding: 2rem 0; }
 
 main.page-main {
   overflow: auto; }
@@ -228,14 +230,28 @@ main.page-main {
 .home-content section.s-projects {
   background: #212529;
   color: #fff;
-  display: flex;
-  align-items: center;
-  margin-bottom: 0;
-  position: relative; }
+  margin-bottom: 0; }
   .home-content section.s-projects .inner {
-    padding: 3rem 0 6rem;
-    position: relative; }
+    padding: 3rem 0 6rem; }
   .home-content section.s-projects h2,
   .home-content section.s-projects .h2 {
+    text-transform: uppercase;
+    margin-bottom: 2rem; }
+
+.home-content section.s-contacts {
+  background: #212529;
+  color: #fff;
+  margin-bottom: 0; }
+  .home-content section.s-contacts .inner {
+    padding: 3rem 0 6rem; }
+  .home-content section.s-contacts .wrapper-link {
+    padding: 6rem 0 3rem; }
+    .home-content section.s-contacts .wrapper-link .btn {
+      padding: 1rem 2.5rem;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      border-radius: 0; }
+  .home-content section.s-contacts h2,
+  .home-content section.s-contacts .h2 {
     text-transform: uppercase;
     margin-bottom: 2rem; }

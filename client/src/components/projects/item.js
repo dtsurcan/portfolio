@@ -13,15 +13,14 @@ class ProjectItem extends Component {
   render() {
     const { src, alt, title, link, skills, id } = this.props;
 
-
-
+    // Skills to badgets
     let SkillsItems = ''
     if (skills) {
       let items = skills
           items = items.split(',')
       SkillsItems = items.map((item, i) => {
         return (
-          <Badge className="dark" key={i}>{ item }</Badge>
+          <Badge color="light" key={i}>{ item }</Badge>
         )
       })
     }

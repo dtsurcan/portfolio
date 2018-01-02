@@ -25,6 +25,15 @@ class SwitchLang extends Component {
   render() {
     const { i18n, languages, onSwitchClick } = this.props;
 
+		if (i18n.language === "ru-RU") {
+			i18n.language = 'ru'
+			i18n.locale = 'ru'
+		}
+		if (i18n.language === "en-US") {
+			i18n.language = 'en'
+			i18n.locale = 'en'
+		}
+
     return (
       <ButtonDropdown isOpen={this.state.dropdownIsOpen} toggle={this.dropdownToggle}>
         <DropdownToggle caret>

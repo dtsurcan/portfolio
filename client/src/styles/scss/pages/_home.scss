@@ -138,14 +138,34 @@
 	section.s-projects {
 		background: gray("900");
 		color: $white;
-		display: flex;
-		align-items: center;
 		margin-bottom: 0;
-		position: relative;
 
 		.inner {
 			padding: 3rem 0 6rem;
-			position: relative;
+		}
+
+		h2,
+		.h2 {
+			text-transform: uppercase;
+			margin-bottom: 2rem;
+		}
+	}
+
+	section.s-contacts {
+		background: gray("900");
+		color: $white;
+		margin-bottom: 0;
+
+		.inner {
+			padding: 3rem 0 6rem;
+		}
+
+		.wrapper-link {
+			padding: 6rem 0 3rem;
+
+			.btn {
+				@include button-size(1rem, 2.5rem, 1.5rem, 1.5rem, 0);
+			}
 		}
 
 		h2,

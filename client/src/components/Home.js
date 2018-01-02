@@ -9,7 +9,8 @@ import {
 import { translate/*, Trans*/ } from 'react-i18next';
 import { Parallax } from 'react-parallax';
 
-import { _log,
+import {
+  _log,
   handleScrollTo,
   handleTyper,
   handleCursor,
@@ -23,10 +24,11 @@ import { SkillsData } from './../components/skills/data';
 import ProjectItem from './../components/projects/item';
 import { ProjectsData } from './../components/projects/data';
 
-import bgTopSrc      from './../images/home-top4.jpg';
+import bgTopSrc      from './../images/home.jpg';
 import upworkLogo   from './../images/logos/upwork-logo.png';
 import manInSuitSrc   from './../images/man-in-suit.png';
 import bgExpSrc   from './../images/experience.jpg';
+import bgContactsSrc   from './../images/contacts.jpg';
 
 class Home extends Component {
 
@@ -49,8 +51,8 @@ class Home extends Component {
   handleLoadHome() {
 
     // Set min height for inner main content
-    const setMinHeight = () => {
-      _log('Changed min height of Top Content');
+    const handletMinHeight = () => {
+      _log('Handle minHeight');
 
       const $sTop = document.querySelector('section.s-top .jumbotron');
       let h = window.innerHeight //(window.innerHeight - 200) > 400 ? (window.innerHeight - 200) : 400
@@ -58,16 +60,16 @@ class Home extends Component {
     };
 
     // Call function
-    setMinHeight();
+    handletMinHeight();
   }
 
   render() {
     const { t } = this.props;
 
-    const skills = SkillsData(t);
-    const projects = ProjectsData(t);
+    const skills = SkillsData(t)
+    const projects = ProjectsData(t)
 
-    console.log(getEmailLink())
+    const email = "mailto:" + getEmailLink()
 
     return (
       <div className="home-content" data-spy="nav-scroll" data-target="#main-header-menu" data-offset="100">
@@ -178,7 +180,7 @@ class Home extends Component {
         <section className="s-projects" id="projects" data-spy="item-scroll" data-item=".card" data-offset="30" data-callback="loadingSkills">
           <Container>
             <div className="inner">
-              <h2 id="header-skills" className="text-center">{t('projects')}</h2>
+              <h2 id="header-projects" className="text-center">{t('projects')}</h2>
 
               { projects.map((part, i) => {
                 const items = part.items;
@@ -203,6 +205,20 @@ class Home extends Component {
         </section>
         {/* /section.s-projects */}
 
+        <section className="s-contacts" id="contacts">
+          <Parallax bgImage={ bgContactsSrc } strength={ 400 }>
+            <Container>
+              <div className="inner">
+                <h2 id="header-contacts" className="text-center">{t('contacts')}</h2>
+
+                <div className="wrapper-link text-center">
+                  <a href={ email } className="btn btn-primary btn-lg text-uppercase">Touch me</a>
+                </div>
+              </div>
+            </Container>
+          </Parallax>
+        </section>
+        {/* /section.s-contacts */}
       </div>
     );
   }

@@ -186,36 +186,45 @@ export function handleSpyNavScroll(options = {}) {
 
     if (!items.length) return;
 
+    const _setActive = (item) => {
+      let $item = document.querySelector(item)
+
+      // Skip if element is not found
+      if (!$item) return;
+
+      const itemH = $item.offsetHeight
+      const itemT = offsetTop($item)
+
+      // Skip if element is not on screen
+      if (($container.scrollTop - _options.offset) > (itemH + itemT)) return;
+
+      let isActive = false
+      if (($container.offsetHeight - $container.clientHeight - _options.offset) > $container.scrollTop) {
+        // Get position current element
+        isActive = (itemT - $container.scrollTop) < _options.offset;
+      } else {
+        isActive = true
+      }
+
+      if (isActive) {
+        let $menuItem = $menu.querySelector('a[data-href="'+item+'"]') ? $menu.querySelector('a[data-href="'+item+'"]') : $menu.querySelector('a[href="'+item+'"]')
+
+        // if state is changed
+        if (!$menuItem.classList.contains('active')) {
+          // clear active class
+          $menuItems.forEach($_menuItem => {
+            $_menuItem.classList.remove('active')
+          })
+
+          // add active class to current
+          $menuItem.classList.add('active')
+        }
+      }
+    }
+
     const _scrollEvent = (e) => {
       items.forEach(item => {
-        let $item = document.querySelector(item)
-
-        // Skip if element is not found
-        if (!$item) return;
-
-        const itemH = $item.offsetHeight
-        const itemT = offsetTop($item)
-
-        // Skip if element is not on screen
-        if (($container.scrollTop - _options.offset) > (itemH + itemT)) return;
-
-        // Get position current element
-        let difference = itemT - $container.scrollTop
-
-        if (difference < _options.offset) {
-          let $menuItem = $menu.querySelector('a[data-href="'+item+'"]') ? $menu.querySelector('a[data-href="'+item+'"]') : $menu.querySelector('a[href="'+item+'"]')
-
-          // if state is changed
-          if (!$menuItem.classList.contains('active')) {
-            // clear active class
-            $menuItems.forEach($_menuItem => {
-              $_menuItem.classList.remove('active')
-            })
-
-            // add active class to current
-            $menuItem.classList.add('active')
-          }
-        }
+        _setActive(item)
       })
     }
 
