@@ -6,7 +6,7 @@ import {
   Col,
   Progress,
   Badge } from 'reactstrap';
-import { translate/*, Trans*/ } from 'react-i18next';
+import { translate, Trans } from 'react-i18next';
 import { Parallax } from 'react-parallax';
 
 import {
@@ -79,10 +79,12 @@ class Home extends Component {
               <Container>
                 <div className="wrapper-content">
                   <div className="content">
-                    <span className="sub-text text-white">Hello <b>Stranger!</b> </span>
-                    <h1><span className="text-white">I'M</span>Dmitri Turcan</h1>
+                    <span className="sub-text text-white">
+                      <Trans i18nKey="hello-stranger">Hello <b>Stranger!</b></Trans>
+                    </span>
+                    <h1><span className="text-white">{t('im')}</span>{t('dmitry-tsurcan')}</h1>
                     <h2>
-                      <span className="typer" data-delay="150" data-words="UX/UI Designer,Web Developer,Powerful Designer">Powerful De</span>
+                      <span className="typer" data-delay="150" data-words={t('typer-text')}>Senior Front</span>
                       <span className="cursor" data-cursordisplay="|" data-owner="some-id"></span> </h2>
                   </div>
                 </div>
@@ -101,17 +103,17 @@ class Home extends Component {
         <section className="s-about-me" id="about-me" data-spy="item-scroll" data-item=".progress" data-offset="30" data-callback="loadingProgress">
           <Container>
             <div className="inner">
-              <img src={ manInSuitSrc } alt="Man in suit" className="man-bg" />
+              <img src={ manInSuitSrc } alt="Man in suit" className="man-bg d-none d-lg-block" />
 
               <blockquote>
-                <h6>Know About me</h6>
-                <h2>I AM A WEB DEVELOPER</h2>
-                <p>Senior Front-end developer with more than 10 years of professional experience.</p>
-                <p className="mb-0">Perfectionist, who is very sensitive regarding the product quality and is deadline oriented. I'm experienced with modern Front-end web development workflows, I'm able to suggest new and better ways of doing things and can make sure you website ends up being awesome.</p>
+                <h6>{t('know-about-me')}</h6>
+                <h2>{t('im-a-web-developer')}</h2>
+                <p>{t('about-me-1')}</p>
+                <p className="mb-0">{t('about-me-2')}</p>
 
                 <hr />
 
-                <p><img src={ upworkLogo } alt="Upwork" style={{'height': '25px'}}/> Upwork tests:</p>
+                <p><img src={ upworkLogo } alt="Upwork" style={{'height': '25px'}}/> {t('upwork-tests')}</p>
 
                 <div className="mb-3">
                   <label>HTML5 <Badge color="success">Top 10%</Badge>:</label>
@@ -139,7 +141,7 @@ class Home extends Component {
                 </div>
 
                 <p className="mb-0">
-                  <a href="https://www.upwork.com/freelancers/web-developer_~~2795bf045a4c8da1" target="_blank" rel="noopener noreferrer">profile link</a>
+                  <a href="https://www.upwork.com/freelancers/web-developer_~~2795bf045a4c8da1" target="_blank" rel="noopener noreferrer">{t('profile-link')}</a>
                 </p>
               </blockquote>
             </div>
@@ -212,7 +214,7 @@ class Home extends Component {
                 <h2 id="header-contacts" className="text-center">{t('contacts')}</h2>
 
                 <div className="wrapper-link text-center">
-                  <a href={ email } className="btn btn-primary btn-lg text-uppercase">Touch me</a>
+                  <a href={ email } className="btn btn-primary btn-lg text-uppercase">{t('write-me')}</a>
                 </div>
               </div>
             </Container>

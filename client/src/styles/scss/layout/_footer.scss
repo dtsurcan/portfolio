@@ -1,5 +1,10 @@
 footer.page-footer {
 	background: gray("900");
 	color: gray("500");
-	padding: 2rem 0;
+	font-size: $font-size-sm;
+	padding: 1rem 0;
+
+	@include media-breakpoint-up(sm) {
+		font-size: $font-size-base;
+	}
 }

@@ -14,10 +14,15 @@ const i18nextOptions = {
   ns: ['translations'],
   defaultNS: 'translations',
 
-  debug: true,
+  debug: false,
 
   load: 'languageOnly',
-  resGetPath: './locales/__lng__/__ns__.json',
+  resGetPath: 'locales/__lng__/__ns__.json',
+  backend: {
+    // path where resources get loaded from
+    loadPath: 'locales/{{lng}}/{{ns}}.json',
+    allowMultiLoading: false
+  },
 
 
   // interpolation: {
@@ -36,6 +41,5 @@ i18n
   .init(i18nextOptions, (err, t) => {
       _log('Init: i18next');
   });
-
 
 export default i18n;

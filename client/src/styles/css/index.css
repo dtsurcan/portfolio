@@ -22,31 +22,42 @@
   transition: all ease 2s; }
 
 .skill-item {
-  height: 12rem;
-  width: 12rem;
+  height: 9rem;
+  width: 9rem;
   background: none;
   position: relative;
   text-align: center;
   margin: 0 auto; }
+  @media (min-width: 576px) {
+    .skill-item {
+      width: 12rem;
+      height: 12rem; } }
   .skill-item svg {
-    height: 12rem;
-    width: 12rem;
+    height: 9rem;
+    width: 9rem;
     position: absolute;
     left: 50%;
     margin-left: -50%;
     transform: rotate(90deg);
     transition: all 0.2s ease-in-out; }
+    @media (min-width: 576px) {
+      .skill-item svg {
+        width: 12rem;
+        height: 12rem; } }
     .skill-item svg path {
       stroke: #61dafb;
       fill: none;
       transition: all 0.2s ease-in-out; }
   .skill-item h4 {
-    font-size: 1.1rem;
+    font-size: .9rem;
     margin-bottom: 0;
     font-weight: 300;
     position: relative;
     z-index: 1;
     transition: all 0.2s ease-in-out; }
+    @media (min-width: 576px) {
+      .skill-item h4 {
+        font-size: 1.1rem; } }
   .skill-item .card-body {
     align-self: center;
     align-items: center;
@@ -58,16 +69,20 @@
     color: #000; }
 
 .project-item {
-  width: 20rem;
-  height: 20rem;
+  width: 16rem;
+  height: 16rem;
   max-width: 100%;
   background: none;
   border: 3px solid #343a40;
   overflow: hidden;
   position: relative;
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
   border-radius: 10px;
   transition: all ease 1s; }
+  @media (min-width: 576px) {
+    .project-item {
+      width: 20rem;
+      height: 20rem; } }
   .project-item > img {
     transition: all ease 1s; }
   .project-item .card-body {
@@ -128,7 +143,11 @@ header.page-header {
 footer.page-footer {
   background: #212529;
   color: #adb5bd;
-  padding: 2rem 0; }
+  font-size: 0.875rem;
+  padding: 1rem 0; }
+  @media (min-width: 576px) {
+    footer.page-footer {
+      font-size: 1rem; } }
 
 main.page-main {
   overflow: auto; }
@@ -139,36 +158,63 @@ main.page-main {
   align-items: center;
   min-height: 20rem;
   margin-bottom: 0;
+  padding: 2rem 0;
   border-radius: 0; }
   .home-content .jumbotron .wrapper-content {
     background: rgba(0, 0, 0, 0.3);
     max-width: 60rem;
     margin: 0 auto;
-    padding: 3rem 6rem; }
+    padding: 3rem 15px; }
+    @media (min-width: 576px) {
+      .home-content .jumbotron .wrapper-content {
+        padding: 3rem 2rem 3rem 3rem; } }
+    @media (min-width: 992px) {
+      .home-content .jumbotron .wrapper-content {
+        padding: 3rem 6rem; } }
     .home-content .jumbotron .wrapper-content .content span.sub-text {
-      font-size: 1.25rem; }
+      display: inline-block;
+      font-size: 1.25rem;
+      margin-bottom: .5rem; }
       .home-content .jumbotron .wrapper-content .content span.sub-text b {
         border-bottom: 2px solid #61dafb; }
     .home-content .jumbotron .wrapper-content .content h1 {
       color: #61dafb;
-      font-size: 100px;
-      line-height: 100px;
+      font-size: 30px;
+      line-height: 30px;
       font-weight: 400; }
+      @media (min-width: 576px) {
+        .home-content .jumbotron .wrapper-content .content h1 {
+          font-size: 70px;
+          line-height: 70px; } }
+      @media (min-width: 992px) {
+        .home-content .jumbotron .wrapper-content .content h1 {
+          font-size: 90px;
+          line-height: 90px; } }
       .home-content .jumbotron .wrapper-content .content h1 span {
         color: #fff;
-        font-size: 50px;
         display: inline-block;
-        transform: rotate(-90deg);
-        line-height: 50px;
+        font-size: 30px;
+        line-height: 30px;
         position: relative;
-        top: -16px;
-        left: -20px; }
+        margin-right: 10px; }
+        @media (min-width: 992px) {
+          .home-content .jumbotron .wrapper-content .content h1 span {
+            font-size: 50px;
+            line-height: 50px;
+            margin-right: 0;
+            top: -12px;
+            left: -20px;
+            transform: rotate(-90deg); } }
     .home-content .jumbotron .wrapper-content .content h2 {
       color: #61dafb;
+      font-size: 1rem;
       font-weight: 400;
       border-left: 3px solid #61dafb;
       padding-left: 10px;
       margin-top: 20px; }
+      @media (min-width: 992px) {
+        .home-content .jumbotron .wrapper-content .content h2 {
+          font-size: 2rem; } }
 
 .home-content section.s-top {
   position: relative; }
@@ -209,9 +255,12 @@ main.page-main {
     left: 0; }
   .home-content section.s-about-me blockquote {
     max-width: 60rem;
-    padding: 3rem 6rem;
     margin: 0;
-    margin-left: 400px; }
+    padding: 3rem 0; }
+    @media (min-width: 992px) {
+      .home-content section.s-about-me blockquote {
+        margin-left: 400px;
+        padding-left: 6rem; } }
 
 .home-content section.s-skills .inner {
   color: #fff;
@@ -248,9 +297,12 @@ main.page-main {
     padding: 6rem 0 3rem; }
     .home-content section.s-contacts .wrapper-link .btn {
       padding: 1rem 2.5rem;
-      font-size: 1.5rem;
+      font-size: 1rem;
       line-height: 1.5rem;
       border-radius: 0; }
+      @media (min-width: 576px) {
+        .home-content section.s-contacts .wrapper-link .btn {
+          font-size: 1.5rem; } }
   .home-content section.s-contacts h2,
   .home-content section.s-contacts .h2 {
     text-transform: uppercase;

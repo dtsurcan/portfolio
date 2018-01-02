@@ -252,7 +252,7 @@ export function handleSpyItemScroll(options = {}) {
       $bar.style.width = value + '%'
     },
     loadingSkills: ($item) => {
-      $item.classList.add('animated', 'bounce')
+      $item.classList.add('animated', 'pulse')
     }
   }
 

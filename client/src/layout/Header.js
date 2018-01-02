@@ -33,26 +33,26 @@ class Header extends Component {
     return (
       <header className="page-header sticky">
 	      <Navbar dark expand="md" className="bg-dark navbar-header">
-	        <NavLink className='navbar-brand' href='/'>{t('header.menu.logo-title')}</NavLink>
+	        <NavLink className='navbar-brand' href='/'>DTsurcan</NavLink>
 
 	        <NavbarToggler onClick={ this.navbarToggle } />
 
 	        <Collapse isOpen={ this.state.navbarIsOpen } navbar id="main-header-menu">
 	          <Nav navbar className="ml-auto">
               <NavItem>
-                <NavLink className='nav-link active' href='#home' data-toggle="scroll-to">{t('header.menu.home')}</NavLink>
+                <NavLink className='nav-link active' href='#home' data-toggle="scroll-to">{t('home')}</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className='nav-link' href='#about-me' data-toggle="scroll-to">{t('header.menu.about')}</NavLink>
+                <NavLink className='nav-link' href='#about-me' data-toggle="scroll-to">{t('about')}</NavLink>
               </NavItem>
 	            <NavItem>
-                <NavLink className='nav-link' href='#skills' data-toggle="scroll-to">{t('header.menu.skills')}</NavLink>
+                <NavLink className='nav-link' href='#skills' data-toggle="scroll-to">{t('skills')}</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className='nav-link' href='#projects' data-toggle="scroll-to">{t('header.menu.projects')}</NavLink>
+                <NavLink className='nav-link' href='#projects' data-toggle="scroll-to">{t('projects')}</NavLink>
               </NavItem>
-              <NavItem className="mr-lg-2">
-                <NavLink className='nav-link' href='#contacts' data-toggle="scroll-to">{t('header.menu.contacts')}</NavLink>
+              <NavItem className="mr-sm-2">
+                <NavLink className='nav-link' href='#contacts' data-toggle="scroll-to">{t('contacts')}</NavLink>
 	            </NavItem>
               <NavItem>
                 <SwitchLang languages={ languages } onSwitchClick={ changeLanguage }></SwitchLang>

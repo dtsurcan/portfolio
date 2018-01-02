@@ -29,7 +29,7 @@ export function ProjectsData( t ) {
           src: gotoSrc,
           alt: 'GoTo',
           title: 'GoTo',
-          link: 'https://www.magiclinks.org/',
+          link: 'https://www.goto.com/',
           skills: 'HTML5,CSS3,AngularJS,Bootstrap3'
         },
         {

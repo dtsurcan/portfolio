@@ -1,4 +1,5 @@
-$size: 20rem;
+$size: 16rem;
+$size-sm: 20rem;
 .project-item {
   width: $size;
   height: $size;
@@ -7,10 +8,15 @@ $size: 20rem;
   border: 3px solid gray("800");
   overflow: hidden;
   position: relative;
-  margin-bottom: $grid-gutter-width;
+  margin: 0 auto $grid-gutter-width;
 
   @include border-radius(10px);
   @include transition(all ease 1s);
+
+  @include media-breakpoint-up(sm) {
+    width: $size-sm;
+    height: $size-sm;
+  }
 
   > img {
     @include transition(all ease 1s);

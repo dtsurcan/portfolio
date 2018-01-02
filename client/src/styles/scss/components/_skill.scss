@@ -1,4 +1,5 @@
-$sk-size: 12rem;
+$sk-size: 9rem;
+$sk-size-sm: 12rem;
 .skill-item {
   height: $sk-size;
   width: $sk-size;
@@ -7,16 +8,25 @@ $sk-size: 12rem;
   text-align: center;
   margin: 0 auto;
 
+  @include media-breakpoint-up(sm) {
+    width: $sk-size-sm;
+    height: $sk-size-sm;
+  }
+
   svg {
     height: $sk-size;
     width: $sk-size;
     position: absolute;
     left: 50%;
     margin-left: -50%;
-
     transform: rotate(90deg);
 
     @include transition($transition-base);
+
+    @include media-breakpoint-up(sm) {
+      width: $sk-size-sm;
+      height: $sk-size-sm;
+    }
 
     path {
       stroke: theme-color("primary");
@@ -27,13 +37,17 @@ $sk-size: 12rem;
   }
 
   h4 {
-    font-size: 1.1rem;
+    font-size: .9rem;
     margin-bottom: 0;
     font-weight: $font-weight-light;
     position: relative;
     z-index: 1;
 
     @include transition($transition-base);
+
+    @include media-breakpoint-up(sm) {
+      font-size: 1.1rem;
+    }
   }
 
   .card-body {
