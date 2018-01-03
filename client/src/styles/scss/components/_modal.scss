@@ -1,0 +1,54 @@
+.modal-content {
+  background: $modal-content-bg;
+  border-color: transparent;
+
+  @include box-shadow(0 0 0 $white);
+
+  span.badge {
+    font-weight: $font-weight-light;
+    margin-right: .2rem;
+  }
+}
+
+.modal-header {
+  border-bottom-color: $modal-header-border-color;
+}
+
+.modal-body {
+  background: rgba($body-bg, .9);
+  color: gray("300");
+
+  @include box-shadow($modal-content-box-shadow-xs);
+
+  @include media-breakpoint-up(sm) {
+    @include box-shadow($modal-content-box-shadow-sm-up);
+  }
+}
+
+.modal {
+  .close {
+    color: gray("300");
+    opacity: 1;
+    font-weight: 300;
+    font-size: 3rem;
+    padding: 0;
+    padding-bottom: .5rem;
+
+    @include hover-focus {
+      cursor: pointer;
+      outline: none;
+    };
+  }
+
+  &.fade {
+    .modal-dialog {
+      transform: translate(25%, 0);
+    }
+  }
+
+  &.show {
+    .modal-dialog {
+      transform: translate(0, 0);
+    }
+  }
+}

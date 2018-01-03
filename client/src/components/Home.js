@@ -32,7 +32,6 @@ import bgExpSrc   from './../images/experience.jpg';
 import bgContactsSrc   from './../images/contacts.jpg';
 
 class Home extends Component {
-
   // When component did mount
   componentDidMount() {
     this.handleLoadHome();
@@ -60,6 +59,12 @@ class Home extends Component {
 
     // Call function
     handletMinHeight();
+  }
+
+  toggleProjectModal() {
+    this.setState({
+      projectModalShow: !this.state.projectModalShow
+    });
   }
 
   render() {
@@ -119,7 +124,7 @@ class Home extends Component {
                 { tests.map((test, i) => {
                   return (
                     <div key={i} className="mb-3">
-                      <TestItem {...test}></TestItem>
+                      <TestItem {...test}/>
                     </div>
                   )
                 })}
@@ -144,7 +149,7 @@ class Home extends Component {
                   { skills.map((skill, i) => {
                     return (
                       <Col sm={{ size: 'auto' }} key={i}>
-                        <SkillItem {...skill}></SkillItem>
+                        <SkillItem {...skill} />
                       </Col>
                     )
                   })}
@@ -165,7 +170,7 @@ class Home extends Component {
                 { projects.map((project, i) => {
                   return (
                     <Col sm={{ size: 'auto' }} key={i}>
-                      <ProjectItem {...project}></ProjectItem>
+                      <ProjectItem {...project} />
                     </Col>
                   )
                 })}

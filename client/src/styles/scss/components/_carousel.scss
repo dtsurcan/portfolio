@@ -1,0 +1,17 @@
+.carousel-caption {
+  background: rgba($black, .4);
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  @include hover-focus {
+    background: rgba($black, .2);
+    cursor: pointer;
+
+    @include transition($transition-base);
+  };
+}
+
+.carousel-indicators .active {
+  background-color: theme-color("primary");
+}

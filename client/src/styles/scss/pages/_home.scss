@@ -52,7 +52,7 @@
 					}
 
 					span {
-						color: $white;
+						color: gray("300");
 						display: inline-block;
 						font-size: 30px;
 						line-height: 30px;
@@ -127,7 +127,7 @@
 	$mw: 60rem;
 	section.s-about-me {
 		background: theme-color('body-bg');
-		color: $white;
+		color: gray("300");
 		display: flex;
 		align-items: center;
 		margin-bottom: 0;
@@ -157,7 +157,7 @@
 
 	section.s-skills {
 		.inner {
-			color: $white;
+			color: gray("300");
 			padding: 3rem 0 6rem;
 		}
 
@@ -176,7 +176,7 @@
 
 	section.s-projects {
 		background: theme-color('body-bg');
-		color: $white;
+		color: gray("300");
 		margin-bottom: 0;
 
 		.inner {
@@ -191,7 +191,7 @@
 	}
 
 	section.s-contacts {
-		color: $white;
+		color: gray("300");
 		margin-bottom: 0;
 
 		.inner {

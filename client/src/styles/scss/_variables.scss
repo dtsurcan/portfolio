@@ -27,7 +27,7 @@ $enable-shadows:            true;
 // Fonts
 //
 
-$font-family-sans-serif:      Oswald, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-sans-serif:      "Roboto Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 //
 // Montserrat weight map:
@@ -56,3 +56,12 @@ $tooltip-bg:            $primary-dark;
 $tooltip-padding-y:     6px;
 $tooltip-padding-x:     12px;
 $tooltip-margin:        1rem 0 0 0;
+
+// Modals
+
+$modal-content-bg:                  none;
+$modal-content-border-color:        rgba(#000,.2);
+
+$modal-backdrop-opacity:            .75;
+$modal-header-border-color:         transparent;
+$modal-footer-border-color:         $modal-header-border-color;

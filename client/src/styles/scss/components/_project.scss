@@ -10,7 +10,7 @@ $size-sm: 20rem;
   position: relative;
   margin: 0 auto $grid-gutter-width;
 
-  @include border-radius(10px);
+  @include border-radius(0);
   @include transition(all ease 1s);
 
   @include media-breakpoint-up(sm) {
@@ -32,15 +32,12 @@ $size-sm: 20rem;
     opacity: 0;
     padding: 0;
 
-    @include border-radius(6px);
+    @include border-radius(0);
     @include transition(all ease 1s);
 
     span.badge {
       font-weight: $font-weight-light;
-
-      + span.badge {
-        margin-left: .2rem;
-      }
+      margin-right: .2rem;
     }
   }
 
@@ -49,17 +46,34 @@ $size-sm: 20rem;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 1rem;
+    padding: $grid-gutter-width;
     transform: translateY(1rem);
 
     @include transition(all ease .6s);
 
-    > a {
+    > a.title {
       display: inline-block;
       margin-bottom: 1rem;
+      margin-left: 0;
 
       @include hover-focus {
         text-decoration: underline;
+      };
+    }
+
+    > a.details {
+      font-size: $font-size-lg;
+      float: right;
+      transform: translateY(3rem);
+      opacity: 0;
+
+      @include transition(all ease 1s);
+
+      @include hover-focus {
+        cursor: pointer;
+        color: theme-color("primary");
+
+        @include transition($transition-base);
       };
     }
   }
@@ -78,6 +92,11 @@ $size-sm: 20rem;
 
     .content {
       transform: translateY(0);
+
+      > a.details {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   };
 }

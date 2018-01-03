@@ -7,10 +7,12 @@
 @import './animations';
 
 // components
+@import './components/carousel';
 @import './components/cursor';
+@import './components/modal';
 @import './components/progress';
-@import './components/skill';
 @import './components/project';
+@import './components/skill';
 
 // Layout
 @import './layout/header';

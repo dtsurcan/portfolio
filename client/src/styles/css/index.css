@@ -12,19 +12,137 @@
 .fadebounce-animated {
   animation: fadebounce 3s; }
 
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.4); }
+
+.carousel-control-next:focus, .carousel-control-next:hover,
+.carousel-control-prev:focus,
+.carousel-control-prev:hover {
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; }
+
+.carousel-indicators .active {
+  background-color: #f18c1d; }
+
 .cursor {
   opacity: 0;
   transition: all ease 0.1s; }
   .cursor.show-cursor {
     opacity: 1; }
 
+.modal-content {
+  background: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 #fff; }
+  .modal-content span.badge {
+    font-weight: 300;
+    margin-right: .2rem; }
+
+.modal-header {
+  border-bottom-color: transparent; }
+
+.modal-body {
+  background: rgba(32, 48, 62, 0.9);
+  color: #dee2e6;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); }
+  @media (min-width: 576px) {
+    .modal-body {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); } }
+
+.modal .close {
+  color: #dee2e6;
+  opacity: 1;
+  font-weight: 300;
+  font-size: 3rem;
+  padding: 0;
+  padding-bottom: .5rem; }
+  .modal .close:focus, .modal .close:hover {
+    cursor: pointer;
+    outline: none; }
+
+.modal.fade .modal-dialog {
+  transform: translate(25%, 0); }
+
+.modal.show .modal-dialog {
+  transform: translate(0, 0); }
+
 .progress-bar {
   transition: all ease 2s; }
+
+.project-item {
+  width: 16rem;
+  height: 16rem;
+  max-width: 100%;
+  background: none;
+  border: 3px solid #343a40;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto 30px;
+  border-radius: 0;
+  transition: all ease 1s; }
+  @media (min-width: 576px) {
+    .project-item {
+      width: 20rem;
+      height: 20rem; } }
+  .project-item > img {
+    transition: all ease 1s; }
+  .project-item .card-body {
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding: 0;
+    border-radius: 0;
+    transition: all ease 1s; }
+    .project-item .card-body span.badge {
+      font-weight: 300;
+      margin-right: .2rem; }
+  .project-item .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    transform: translateY(1rem);
+    transition: all ease 0.6s; }
+    .project-item .content > a.title {
+      display: inline-block;
+      margin-bottom: 1rem;
+      margin-left: 0; }
+      .project-item .content > a.title:focus, .project-item .content > a.title:hover {
+        text-decoration: underline; }
+    .project-item .content > a.details {
+      font-size: 1.25rem;
+      float: right;
+      transform: translateY(3rem);
+      opacity: 0;
+      transition: all ease 1s; }
+      .project-item .content > a.details:focus, .project-item .content > a.details:hover {
+        cursor: pointer;
+        color: #f18c1d;
+        transition: all 0.2s ease-in-out; }
+  .project-item:focus, .project-item:hover {
+    border-color: #f18c1d; }
+    .project-item:focus > img, .project-item:hover > img {
+      opacity: .1;
+      transform: scale(1.1); }
+    .project-item:focus .card-body, .project-item:hover .card-body {
+      opacity: 1; }
+    .project-item:focus .content, .project-item:hover .content {
+      transform: translateY(0); }
+      .project-item:focus .content > a.details, .project-item:hover .content > a.details {
+        opacity: 1;
+        transform: translateY(0); }
 
 .skill-item {
   height: 9rem;
   width: 9rem;
   background: none;
+  border: 0 none;
   position: relative;
   text-align: center;
   margin: 0 auto; }
@@ -67,61 +185,6 @@
     fill: #f18c1d; }
   .skill-item:focus h4, .skill-item:hover h4 {
     color: #000; }
-
-.project-item {
-  width: 16rem;
-  height: 16rem;
-  max-width: 100%;
-  background: none;
-  border: 3px solid #343a40;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto 30px;
-  border-radius: 10px;
-  transition: all ease 1s; }
-  @media (min-width: 576px) {
-    .project-item {
-      width: 20rem;
-      height: 20rem; } }
-  .project-item > img {
-    transition: all ease 1s; }
-  .project-item .card-body {
-    background: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    padding: 0;
-    border-radius: 6px;
-    transition: all ease 1s; }
-    .project-item .card-body span.badge {
-      font-weight: 300; }
-      .project-item .card-body span.badge + span.badge {
-        margin-left: .2rem; }
-  .project-item .content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem 1rem;
-    transform: translateY(1rem);
-    transition: all ease 0.6s; }
-    .project-item .content > a {
-      display: inline-block;
-      margin-bottom: 1rem; }
-      .project-item .content > a:focus, .project-item .content > a:hover {
-        text-decoration: underline; }
-  .project-item:focus, .project-item:hover {
-    border-color: #f18c1d; }
-    .project-item:focus > img, .project-item:hover > img {
-      opacity: .1;
-      transform: scale(1.1); }
-    .project-item:focus .card-body, .project-item:hover .card-body {
-      opacity: 1; }
-    .project-item:focus .content, .project-item:hover .content {
-      transform: translateY(0); }
 
 header.page-header {
   position: relative;
@@ -191,7 +254,7 @@ main.page-main {
           font-size: 90px;
           line-height: 90px; } }
       .home-content .jumbotron .wrapper-content .content h1 span {
-        color: #fff;
+        color: #dee2e6;
         display: inline-block;
         font-size: 30px;
         line-height: 30px;
@@ -246,7 +309,7 @@ main.page-main {
 
 .home-content section.s-about-me {
   background: #20303E;
-  color: #fff;
+  color: #dee2e6;
   display: flex;
   align-items: center;
   margin-bottom: 0;
@@ -267,7 +330,7 @@ main.page-main {
         padding-left: 6rem; } }
 
 .home-content section.s-skills .inner {
-  color: #fff;
+  color: #dee2e6;
   padding: 3rem 0 6rem; }
 
 .home-content section.s-skills h2,
@@ -282,7 +345,7 @@ main.page-main {
 
 .home-content section.s-projects {
   background: #20303E;
-  color: #fff;
+  color: #dee2e6;
   margin-bottom: 0; }
   .home-content section.s-projects .inner {
     padding: 3rem 0 6rem; }
@@ -292,7 +355,7 @@ main.page-main {
     margin-bottom: 2rem; }
 
 .home-content section.s-contacts {
-  color: #fff;
+  color: #dee2e6;
   margin-bottom: 0; }
   .home-content section.s-contacts .inner {
     padding: 3rem 0 6rem; }
