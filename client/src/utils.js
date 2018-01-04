@@ -22,7 +22,7 @@ export function toCapitalize(string) {
 // Get offset top value
 export function offsetTop($el) {
   var rect = $el.getBoundingClientRect(),
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      scrollTop = window.pageYOffset || (document.body.scrollTop || document.documentElement.scrollTop)
 
   return rect.top + scrollTop
 }
@@ -148,17 +148,20 @@ export function handleScrollTo(options = {}) {
 
     e.preventDefault();
 
-    const container = document.documentElement
+    const container = document.scrollingElement
 
     const _makeScrollTo = (element, to, duration) => {
       if (duration <= 0) return;
-      var difference = to - element.scrollTop;
-      var perTick = difference / duration * 10;
+
+      let difference = to - element.scrollTop
+      let perTick = difference / duration * 10
 
       setTimeout(function() {
-          element.scrollTop = element.scrollTop + perTick;
+          element.scrollTop = element.scrollTop + perTick
+
           if (element.scrollTop === to) return;
-          _makeScrollTo(element, to, duration - 10);
+
+          _makeScrollTo(element, to, duration - 10)
       }, 10);
     }
 
@@ -216,13 +219,15 @@ export function handleSpyNavScroll(options = {}) {
       const itemH = $item.offsetHeight
       const itemT = offsetTop($item)
 
+      const scrollTop = $container === document.documentElement ? document.scrollingElement.scrollTop : $container.scrollTop;
+
       // Skip if element is not on screen
-      if (($container.scrollTop - _options.offset) > (itemH + itemT)) return;
+      if ((scrollTop - _options.offset) > (itemH + itemT)) return;
 
       let isActive = false
-      if (($container.offsetHeight - $container.clientHeight - _options.offset) > $container.scrollTop) {
+      if (($container.offsetHeight - $container.clientHeight - _options.offset) > scrollTop) {
         // Get position current element
-        isActive = (itemT - $container.scrollTop) < _options.offset;
+        isActive = (itemT - scrollTop) < _options.offset;
       } else {
         isActive = true
       }
@@ -312,7 +317,9 @@ export function handleSpyItemScroll(options = {}) {
         const itemH = $item.offsetHeight
         const itemT = offsetTop($item)
 
-        let difference = $container.scrollTop + $container.clientHeight - _options.offset - (itemT + itemH)
+        const scrollTop = $container === document.documentElement ? document.scrollingElement.scrollTop : $container.scrollTop;
+
+        let difference = scrollTop + $container.clientHeight - _options.offset - (itemT + itemH)
         if (difference > 0) {
           if (_options.callback) {
 

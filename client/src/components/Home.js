@@ -7,6 +7,8 @@ import {
 import { translate, Trans } from 'react-i18next';
 import { Parallax } from 'react-parallax';
 
+import Loader from './../layout/Loader';
+
 import {
   _log,
   handleScrollTo,
@@ -42,6 +44,11 @@ class Home extends Component {
     handleCursor()
     handleSpyNavScroll()
     handleSpyItemScroll()
+
+    setTimeout(() => {
+      this._loader.loaded()
+
+    }, 1000)
   }
   componentWillUnmount() {
     window.removeListener('resize', this.handleLoadHome);
@@ -78,6 +85,8 @@ class Home extends Component {
 
     return (
       <div className="home-content" data-spy="nav-scroll" data-target="#main-header-menu" data-offset="100">
+        <Loader ref={(loader) => { this._loader = loader; }} />
+
         <section className="s-top" id="home">
           <Parallax bgImage={ bgTopSrc } strength={ 400 }>
             <Jumbotron>
@@ -98,7 +107,7 @@ class Home extends Component {
           </Parallax>
 
           <div className="wrapper-goto">
-            <a data-href="#header-skills" data-toggle="scroll-to">
+            <a data-href="#header-about-me" data-toggle="scroll-to">
               <i className="fadebounce-animated"></i>
             </a>
           </div>
@@ -111,7 +120,7 @@ class Home extends Component {
               <img src={ manInSuitSrc } alt="Man in suit" className="man-bg d-none d-lg-block" style={{ maxWidth: '400px' }} />
 
               <blockquote>
-                <h6>{t('know-about-me')}</h6>
+                <h6 id="header-about-me">{t('know-about-me')}</h6>
                 <h2>{t('im-a-web-developer')}</h2>
                 <p>{t('about-me-1')}</p>
                 <p className="mb-0">{t('about-me-2')}</p>
