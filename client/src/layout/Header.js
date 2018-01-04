@@ -28,7 +28,7 @@ class Header extends Component {
       i18n.changeLanguage(lng);
     }
 
-    const languages = [ 'ru', 'en', 'de' ]
+    const languages = [ 'ru', 'en' ]
 
     return (
       <header className="page-header sticky-md">

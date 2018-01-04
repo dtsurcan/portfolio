@@ -13,7 +13,9 @@
   animation: fadebounce 3s; }
 
 .carousel-caption {
-  background: rgba(0, 0, 0, 0.4); }
+  background: rgba(0, 0, 0, 0.5); }
+  .carousel-caption h3 {
+    display: none; }
 
 .carousel-control-next:focus, .carousel-control-next:hover,
 .carousel-control-prev:focus,

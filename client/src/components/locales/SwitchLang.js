@@ -25,12 +25,20 @@ class SwitchLang extends Component {
   render() {
     const { i18n, languages, onSwitchClick } = this.props;
 
+		let language = i18n.language
+		if (language.toUpperCase() === 'RU-RU') {
+			language = 'ru';
+		}
+		if (language.toUpperCase() === 'EN-US') {
+			language = 'en';
+		}
+
     return (
       <ButtonDropdown isOpen={this.state.dropdownIsOpen} toggle={this.dropdownToggle}>
-        <DropdownToggle caret> {toCapitalize(i18n.language)} </DropdownToggle>
+        <DropdownToggle caret> { toCapitalize(language) } </DropdownToggle>
         <DropdownMenu right style={{ 'minWidth': '5rem' }}>
           {languages.map((lang, i) => (
-            i18n.language !== lang ? <DropdownItem key={i} onClick={() => onSwitchClick(lang)}>{toCapitalize(lang)}</DropdownItem> : ''
+            language !== lang ? <DropdownItem key={i} onClick={() => onSwitchClick(lang)}>{toCapitalize(lang)}</DropdownItem> : ''
           ))}
         </DropdownMenu>
       </ButtonDropdown>

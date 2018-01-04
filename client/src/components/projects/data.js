@@ -30,29 +30,25 @@ export function ProjectsData( t ) {
       src: exclusiveSrc,
       alt: 'Exclusive',
       title: 'Exclusive.one',
-      description: 'Социальная медиа сеть. Стиль, мода и красота.',
+      description: "exclusive-description",
       link: 'https://exclusive.one/',
       skills: 'HTML5,CSS3,jQuery,Bootstrap4,PSD to HTML',
       images: [
         {
           src:exclusive1Src,
-          altText: 'Home page',
-          caption: 'Home page'
+          caption: "exclusive-image-1"
         },
         {
           src:exclusive2Src,
-          altText: 'Brands page',
-          caption: 'Brands page'
+          caption: "exclusive-image-2"
         },
         {
           src:exclusive3Src,
-          altText: 'Products page',
-          caption: 'Products page'
+          caption: "exclusive-image-3"
         },
         {
           src:exclusive4Src,
-          altText: 'Info page',
-          caption: 'Info page'
+          caption: "exclusive-image-4"
         },
       ]
     },
@@ -61,29 +57,25 @@ export function ProjectsData( t ) {
       src: openhousevideoSrc,
       alt: 'OpenHouseVideo',
       title: 'OpenHouseVideo',
-      description: 'Проект риэлторской компании.',
+      description: "openhousevideo-description",
       link: 'https://www.openhousevideo.com/',
       skills: 'HTML5,CSS3,jQuery,Bootstrap3,Metronic,VideoJS',
       images: [
         {
           src:openhousevideo1Src,
-          altText: 'Home page',
-          caption: 'Home page'
+          caption: "openhousevideo-image-1"
         },
         {
           src:openhousevideo2Src,
-          altText: 'Agent/Broker page',
-          caption: 'Agent/Broker page'
+          caption: "openhousevideo-image-2"
         },
         {
           src:openhousevideo3Src,
-          altText: 'Player page',
-          caption: 'Player page'
+          caption: "openhousevideo-image-3"
         },
         {
           src:openhousevideo4Src,
-          altText: 'Create page',
-          caption: 'Create page'
+          caption: "openhousevideo-image-4"
         },
       ]
     },
@@ -92,24 +84,21 @@ export function ProjectsData( t ) {
       src: gotoSrc,
       alt: 'GoTo',
       title: 'GoTo',
-      description: 'Поисковый медиа портал.',
+      description: "goto-description",
       link: 'https://www.goto.com/',
       skills: 'HTML5,CSS3,AngularJS,Bootstrap3',
       images: [
         {
           src:goto1Src,
-          altText: 'Home page',
-          caption: 'Home page'
+          caption: 'goto-image-1'
         },
         {
           src:goto2Src,
-          altText: 'Results page',
-          caption: 'Results page'
+          caption: 'goto-image-2'
         },
         {
           src:goto3Src,
-          altText: 'Content page',
-          caption: 'Content page'
+          caption: 'goto-image-3'
         }
       ]
     },
@@ -118,29 +107,25 @@ export function ProjectsData( t ) {
       src: chippmunkSrc,
       alt: 'Chippmunk',
       title: 'Chippmunk',
-      description: 'Сервис по поиску скидочных купонов для более чем 600 продавцов.',
+      description: "chippmunk-description",
       link: 'https://www.chippmunk.com/',
       skills: 'HTML5,CSS3,jQuery,Bootstrap3',
       images: [
         {
           src:chippmunk1Src,
-          altText: 'Home page',
-          caption: 'Home page'
+          caption: 'chippmunk-image-1'
         },
         {
           src:chippmunk2Src,
-          altText: 'Search page',
-          caption: 'Search page'
+          caption: 'chippmunk-image-2'
         },
         {
           src:chippmunk4Src,
-          altText: 'Coupons page',
-          caption: 'Coupons page'
+          caption: 'chippmunk-image-3'
         },
         {
           src:chippmunk3Src,
-          altText: 'ExpertShoper page',
-          caption: 'ExpertShoper page'
+          caption: 'chippmunk-image-4'
         },
       ]
     },
@@ -149,29 +134,25 @@ export function ProjectsData( t ) {
       src: magiclinksSrc,
       alt: 'MagicLinks',
       title: 'MagicLinks',
-      description: 'Сервис по продвижению ваших продуктов.',
+      description: "magiclinks-description",
       link: 'https://www.magiclinks.org/',
       skills: 'HTML5,CSS3,jQuery,Bootstrap3',
       images: [
         {
           src:magiclinks1Src,
-          altText: 'Home page',
-          caption: 'Home page'
+          caption: 'magiclinks-image-1'
         },
         {
           src:magiclinks2Src,
-          altText: 'Welcome page',
-          caption: 'Welcome page'
+          caption: 'magiclinks-image-2'
         },
         {
           src:magiclinks3Src,
-          altText: 'Create Links page',
-          caption: 'Create Links page'
+          caption: 'magiclinks-image-3'
         },
         {
           src:magiclinks4Src,
-          altText: 'Reports page',
-          caption: 'Reports page'
+          caption: 'magiclinks-image-4'
         },
       ]
     }

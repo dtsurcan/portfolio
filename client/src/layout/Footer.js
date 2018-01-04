@@ -7,13 +7,13 @@ import SwitchLang from './../components/locales/SwitchLang';
 class Footer extends Component {
 
   render() {
-    const { i18n } = this.props;
+    const { t, i18n } = this.props;
 
     const changeLanguage = (lng) => {
       i18n.changeLanguage(lng);
     }
 
-    const languages = [ 'ru', 'en', 'de' ]
+    const languages = [ 'ru', 'en' ]
 
     return (
 	    <footer className="page-footer">
@@ -23,7 +23,7 @@ class Footer extends Component {
           </div>
 
 	    		<p className="mb-0 py-2 text-right">
-            Copyright © 2017 DTsurcan. All Rights Reserved.</p>
+            Copyright © 2017 DTsurcan. {t('copyright')}</p>
 	    	</Container>
 	    </footer>
     );

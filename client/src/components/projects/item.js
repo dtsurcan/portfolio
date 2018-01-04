@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next';
 
 import {
   parents,
@@ -133,7 +134,16 @@ class ProjectItem extends Component {
   }
 
   render() {
-    const { id, src, alt, title, description, link, skills, images } = this.props;
+    const { t, id, src, alt, title, description, link, skills, images } = this.props;
+
+    let _images = images
+    _images = _images.map((image, i) => {
+      const caption = t(image.caption)
+      image.altText = caption
+      image.caption = caption
+
+      return image
+    })
 
     // Skills to badgets
     let SkillsItems = ''
@@ -167,21 +177,21 @@ class ProjectItem extends Component {
           <ModalBody>
             <div className="mb-4">
               { title ? (
-                <p><strong>Title:</strong> { title }</p>
+                <p><strong>{t("title")}:</strong> { title }</p>
               ) : null }
               { description ? (
-                <p><strong>Description:</strong> { description }</p>
+                <p><strong>{t("description")}:</strong> { t(description) }</p>
               ) : null }
               { SkillsItems ? (
-                <p><strong>Skills:</strong> { SkillsItems }</p>
+                <p><strong>{t("skills")}:</strong> { SkillsItems }</p>
               ) : null }
               { link ? (
-                <p><strong>Link:</strong> <a href={ link } target="_blank">{ link }</a></p>
+                <p><strong>{t("link")}:</strong> <a href={ link } target="_blank">{ link }</a></p>
               ) : null }
             </div>
 
-            { images ? (
-              <UncontrolledCarousel items={ images } />
+            { _images ? (
+              <UncontrolledCarousel items={ _images } />
             ) : null }
           </ModalBody>
           <ModalFooter className="p-0">
@@ -211,11 +221,10 @@ ProjectItem.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,
-      altText: PropTypes.string.isRequired,
       caption: PropTypes.string.isRequired
     }).isRequired
   ),
   id: PropTypes.number.isRequired
 }
 
-export default ProjectItem
+export default translate('translations')(ProjectItem);
