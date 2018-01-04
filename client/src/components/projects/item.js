@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import {
+  parents } from './../../utils';
+
+import {
   Badge,
   Card,
   CardBody,
@@ -10,6 +13,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
+  ModalFooter,
   UncontrolledCarousel
 } from 'reactstrap';
 
@@ -18,20 +22,86 @@ class ProjectItem extends Component {
     super(props);
     this.state = {
       modal: false,
+      direction: 'right',
       className: 'modal-lg'
     };
 
     this.toggleModal = this.toggleModal.bind(this)
+    this.togglePrev = this.togglePrev.bind(this)
+    this.toggleNext = this.toggleNext.bind(this)
+    this.getElements = this.getElements.bind(this)
+  }
+
+  getElements() {
+    const $current = document.getElementById('project-item-'+ this.props.id)
+    const $row = parents($current, '.row')[0]
+    const $items = $row.querySelectorAll('.project-item')
+
+    let $prev = null;
+    let $next = null;
+    for (let i = 0; i < $items.length; i++) {
+      if ($items[i] === $current) {
+        if ($items[i-1]) {
+          $prev = $items[i-1]
+        } else {
+          $prev = $items[$items.length-1]
+        }
+        if ($items[i+1]) {
+          $next = $items[i+1]
+        } else {
+          $next = $items[0]
+        }
+      }
+    }
+
+    return {
+      current: $current,
+      prev: $prev,
+      next: $next
+    }
   }
 
   toggleModal() {
+    const elements = this.getElements()
+    const direction = elements.current.getAttribute('direction')
+
+    if (direction !== null) {
+      this.setState({
+        direction: direction
+      });
+    }
     this.setState({
       modal: !this.state.modal
     });
+
+  }
+
+  togglePrev() {
+    const elements = this.getElements()
+
+    elements.prev.setAttribute('direction', 'left')
+    elements.current.setAttribute('direction', 'right')
+
+    elements.prev.querySelector('.details').click()
+    setTimeout(() => {
+      this.toggleModal()
+    }, 225)
+  }
+
+  toggleNext() {
+    const elements = this.getElements()
+
+    elements.next.setAttribute('direction', 'right')
+    elements.current.setAttribute('direction', 'left')
+
+    elements.next.querySelector('.details').click()
+    setTimeout(() => {
+      this.toggleModal()
+    }, 225)
   }
 
   render() {
-    const { src, alt, title, description, link, skills, images } = this.props;
+    const { id, src, alt, title, description, link, skills, images } = this.props;
 
     // Skills to badgets
     let SkillsItems = ''
@@ -47,7 +117,7 @@ class ProjectItem extends Component {
 
     return (
       <div>
-        <Card className="project-item">
+        <Card className="project-item" id={ 'project-item-' + id } data-id={ id }>
           <CardImg src={ src } alt={ alt }/>
           <CardBody>
             <div className="content">
@@ -60,7 +130,7 @@ class ProjectItem extends Component {
           </CardBody>
         </Card>
 
-        <Modal isOpen={ this.state.modal } toggle={ this.toggleModal } className={ this.state.className }>
+        <Modal isOpen={ this.state.modal } toggle={ this.toggleModal } className={ this.state.className + " " + this.state.direction }>
           <ModalHeader toggle={ this.toggleModal } />
           <ModalBody>
             <div className="mb-4">
@@ -82,6 +152,16 @@ class ProjectItem extends Component {
               <UncontrolledCarousel items={ images } />
             ) : null }
           </ModalBody>
+          <ModalFooter className="p-0">
+            <div className="controls">
+              <a className="modal-control-prev" onClick={ this.togglePrev } data-id={ id } role="button" tabIndex="0">
+                <span className="modal-control-prev-icon" aria-hidden="true"></span><span className="sr-only">Previous</span>
+              </a>
+              <a className="modal-control-next" onClick={ this.toggleNext } data-id={ id } role="button" tabIndex="1">
+                <span className="modal-control-next-icon" aria-hidden="true"></span><span className="sr-only">Next</span>
+              </a>
+            </div>
+          </ModalFooter>
         </Modal>
       </div>
     )

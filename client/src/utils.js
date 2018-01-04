@@ -19,11 +19,28 @@ export function toCapitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// Get offset top value
 export function offsetTop($el) {
   var rect = $el.getBoundingClientRect(),
       scrollTop = window.pageYOffset || document.documentElement.scrollTop
 
   return rect.top + scrollTop
+}
+
+// Find parents of element by selector
+export function parents( element, selector ) {
+  let result = []
+
+  do {
+    element = element.parentElement
+    if (element === null) break;
+
+    if (element.matches(selector)) {
+      result.push(element)
+    }
+  } while (true);
+
+  return result;
 }
 
 // Typer effect

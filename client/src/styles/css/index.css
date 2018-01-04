@@ -18,7 +18,7 @@
 .carousel-control-next:focus, .carousel-control-next:hover,
 .carousel-control-prev:focus,
 .carousel-control-prev:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s ease-in-out; }
 
@@ -40,32 +40,91 @@
     margin-right: .2rem; }
 
 .modal-header {
-  border-bottom-color: transparent; }
+  border-bottom-color: transparent;
+  z-index: 2; }
 
 .modal-body {
   background: rgba(32, 48, 62, 0.9);
   color: #dee2e6;
+  z-index: 2;
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); }
   @media (min-width: 576px) {
     .modal-body {
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); } }
 
-.modal .close {
-  color: #dee2e6;
-  opacity: 1;
-  font-weight: 300;
-  font-size: 3rem;
-  padding: 0;
-  padding-bottom: .5rem; }
-  .modal .close:focus, .modal .close:hover {
-    cursor: pointer;
-    outline: none; }
+.modal-footer {
+  z-index: 1; }
+  .modal-footer .controls {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; }
+    .modal-footer .controls .modal-control-prev,
+    .modal-footer .controls .modal-control-next {
+      position: absolute; }
 
-.modal.fade .modal-dialog {
-  transform: translate(25%, 0); }
-
-.modal.show .modal-dialog {
+.modal {
   transform: translate(0, 0); }
+  .modal .close {
+    color: #dee2e6;
+    opacity: 1;
+    font-weight: 300;
+    font-size: 3rem;
+    padding: 0;
+    padding-bottom: .5rem; }
+    .modal .close:focus, .modal .close:hover {
+      cursor: pointer;
+      outline: none; }
+  .modal.fade .right.modal-dialog {
+    transform: translate(25%, 0); }
+  .modal.fade .left.modal-dialog {
+    transform: translate(-25%, 0); }
+  .modal.show .right.modal-dialog,
+  .modal.show .left.modal-dialog {
+    transform: translate(0, 0); }
+
+.modal-control-prev,
+.modal-control-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5; }
+  .modal-control-prev:focus, .modal-control-prev:hover,
+  .modal-control-next:focus,
+  .modal-control-next:hover {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    opacity: .9;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; }
+
+.modal-control-prev {
+  left: -15%; }
+
+.modal-control-next {
+  right: -15%; }
+
+.modal-control-prev-icon,
+.modal-control-next-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: transparent no-repeat center center;
+  background-size: 100% 100%; }
+
+.modal-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"); }
+
+.modal-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"); }
 
 .progress-bar {
   transition: all ease 2s; }
