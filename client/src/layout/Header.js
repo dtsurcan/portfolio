@@ -31,7 +31,7 @@ class Header extends Component {
     const languages = [ 'ru', 'en', 'de' ]
 
     return (
-      <header className="page-header sticky">
+      <header className="page-header sticky-md">
 	      <Navbar dark expand="md" className="bg-dark navbar-header">
 	        <NavLink className='navbar-brand' href='/'>DTsurcan</NavLink>
 
@@ -54,7 +54,7 @@ class Header extends Component {
               <NavItem className="mr-sm-2">
                 <NavLink className='nav-link' href='#contacts' data-toggle="scroll-to">{t('contacts')}</NavLink>
 	            </NavItem>
-              <NavItem>
+              <NavItem className="d-none d-md-inline-block">
                 <SwitchLang languages={ languages } onSwitchClick={ changeLanguage }></SwitchLang>
               </NavItem>
             </Nav>

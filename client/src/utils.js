@@ -43,6 +43,10 @@ export function parents( element, selector ) {
   return result;
 }
 
+export function insertAfter(element, refElement) {
+  return refElement.parentNode.insertBefore(element, refElement.nextSibling);
+}
+
 // Typer effect
 export function handleTyper(options = {}) {
   const defaults = {

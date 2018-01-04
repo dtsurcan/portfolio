@@ -9,8 +9,27 @@ header.page-header {
     width: 100%;
 
     &.bg-dark {
+      background-color: $black !important;
+
       @include media-breakpoint-up(md) {
         background-color: rgba($black, .7) !important;
+      }
+
+      .navbar-collapse {
+        @include media-breakpoint-down(sm) {
+          text-align: center;
+          margin-top: .5rem;
+        }
+
+        .navbar-nav {
+          > li.nav-item {
+            + li {
+              @include media-breakpoint-down(sm) {
+                border-top: 1px solid gray("700");
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -20,5 +39,14 @@ header.page-header {
     position: fixed;
     top: 0;
     z-index: $zindex-fixed;
+  }
+
+  &.sticky-md {
+    @include media-breakpoint-up(md) {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: $zindex-fixed;
+    }
   }
 }

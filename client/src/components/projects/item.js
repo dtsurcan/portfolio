@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  parents } from './../../utils';
+  parents,
+  insertAfter } from './../../utils';
 
 import {
   Badge,
@@ -22,14 +23,28 @@ class ProjectItem extends Component {
     super(props);
     this.state = {
       modal: false,
-      direction: 'right',
+      direction: 'top',
       className: 'modal-lg'
     };
 
     this.toggleModal = this.toggleModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
     this.togglePrev = this.togglePrev.bind(this)
     this.toggleNext = this.toggleNext.bind(this)
     this.getElements = this.getElements.bind(this)
+  }
+
+  componentDidMount() {
+    const $current = document.getElementById('project-item-'+ this.props.id)
+    const $inner = parents($current, '.inner')[0]
+    const $row = parents($current, '.row')[0]
+
+    if (!$inner.querySelector('.modal-backdrop')) {
+      var backdrop = document.createElement('div');
+      backdrop.innerHTML = '<div class="modal-backdrop fade"></div>';
+
+      insertAfter(backdrop, $row)
+    }
   }
 
   getElements() {
@@ -73,7 +88,24 @@ class ProjectItem extends Component {
     this.setState({
       modal: !this.state.modal
     });
+  }
 
+  closeModal() {
+    const elements = this.getElements()
+
+    elements.current.setAttribute('direction', 'bottom')
+    this.setState({
+      direction: 'bottom',
+      modal: !this.state.modal
+    });
+
+    // Set default
+    setTimeout(() => {
+      elements.current.setAttribute('direction', 'top')
+      this.setState({
+        direction: 'top'
+      })
+    }, 300)
   }
 
   togglePrev() {
@@ -85,7 +117,7 @@ class ProjectItem extends Component {
     elements.prev.querySelector('.details').click()
     setTimeout(() => {
       this.toggleModal()
-    }, 225)
+    }, 100)
   }
 
   toggleNext() {
@@ -97,7 +129,7 @@ class ProjectItem extends Component {
     elements.next.querySelector('.details').click()
     setTimeout(() => {
       this.toggleModal()
-    }, 225)
+    }, 100)
   }
 
   render() {
@@ -130,8 +162,8 @@ class ProjectItem extends Component {
           </CardBody>
         </Card>
 
-        <Modal isOpen={ this.state.modal } toggle={ this.toggleModal } className={ this.state.className + " " + this.state.direction }>
-          <ModalHeader toggle={ this.toggleModal } />
+        <Modal isOpen={ this.state.modal } toggle={ this.toggleModal } className={ this.state.className + " " + this.state.direction } backdrop={ false }>
+          <ModalHeader toggle={ this.closeModal } />
           <ModalBody>
             <div className="mb-4">
               { title ? (
@@ -163,6 +195,7 @@ class ProjectItem extends Component {
             </div>
           </ModalFooter>
         </Modal>
+
       </div>
     )
   }

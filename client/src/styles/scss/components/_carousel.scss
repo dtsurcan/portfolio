@@ -5,7 +5,7 @@
 .carousel-control-next,
 .carousel-control-prev {
   @include hover-focus {
-    background: rgba($black, .1);
+    // background: rgba($black, .1);
     cursor: pointer;
 
     @include transition($transition-base);

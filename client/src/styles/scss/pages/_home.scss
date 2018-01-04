@@ -181,6 +181,17 @@
 
 		.inner {
 			padding: 3rem 0 6rem;
+
+			div > .modal-backdrop {
+				visibility: hidden;
+
+				@include transition($transition-base);
+
+				.modal-open & {
+					visibility: visible;
+					opacity: $modal-backdrop-opacity;
+				}
+			}
 		}
 
 		h2,
