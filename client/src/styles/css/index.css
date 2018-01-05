@@ -12,6 +12,16 @@
 .fadebounce-animated {
   animation: fadebounce 3s; }
 
+.carousel-item {
+  background: url("./../../images/loading.svg") center center no-repeat;
+  min-height: 400px;
+  transition: all 0.2s ease-in-out; }
+  .carousel-item img {
+    opacity: 0;
+    transition: all 0.2s ease-in-out; }
+  .carousel-item[data-is-loaded="true"] img {
+    opacity: 1; }
+
 .carousel-caption {
   background: rgba(0, 0, 0, 0.5); }
   .carousel-caption h3 {

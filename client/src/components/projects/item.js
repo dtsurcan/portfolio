@@ -33,21 +33,30 @@ class ProjectItem extends Component {
     this.togglePrev = this.togglePrev.bind(this)
     this.toggleNext = this.toggleNext.bind(this)
     this.getElements = this.getElements.bind(this)
+    this.createModalBackdrop = this.createModalBackdrop.bind(this)
+    this.detectLoadImages = this.detectLoadImages.bind(this)
   }
 
   componentDidMount() {
-    const $current = document.getElementById('project-item-'+ this.props.id)
-    const $inner = parents($current, '.inner')[0]
-    const $row = parents($current, '.row')[0]
-
-    if (!$inner.querySelector('.modal-backdrop')) {
-      var backdrop = document.createElement('div');
-      backdrop.innerHTML = '<div class="modal-backdrop fade"></div>';
-
-      insertAfter(backdrop, $row)
-    }
+    this.createModalBackdrop()
   }
 
+  detectLoadImages(images) {
+    images.forEach(image => {
+      const objImage = new Image();
+
+      objImage.src = image.src;
+      objImage.onload = () => {
+        const element = document.querySelector('[src="'+image.src+'"]')
+
+        if (element !== null) {
+          element.parentNode.setAttribute('data-is-loaded', true)
+        }
+      };
+    })
+  }
+
+  // Get Projects elements
   getElements() {
     const $current = document.getElementById('project-item-'+ this.props.id)
     const $row = parents($current, '.row')[0]
@@ -77,6 +86,7 @@ class ProjectItem extends Component {
     }
   }
 
+  // Open modal project
   toggleModal() {
     const elements = this.getElements()
     const direction = elements.current.getAttribute('direction')
@@ -91,6 +101,7 @@ class ProjectItem extends Component {
     });
   }
 
+  // Close modal project
   closeModal() {
     const elements = this.getElements()
 
@@ -109,6 +120,7 @@ class ProjectItem extends Component {
     }, 300)
   }
 
+  // Show previous modal project
   togglePrev() {
     const elements = this.getElements()
 
@@ -121,6 +133,7 @@ class ProjectItem extends Component {
     }, 100)
   }
 
+  // Show next modal project
   toggleNext() {
     const elements = this.getElements()
 
@@ -133,9 +146,25 @@ class ProjectItem extends Component {
     }, 100)
   }
 
+  // Make backdrop for modal
+  createModalBackdrop() {
+    const $current = document.getElementById('project-item-'+ this.props.id)
+    const $inner = parents($current, '.inner')[0]
+    const $row = parents($current, '.row')[0]
+
+    // Add backdrop element
+    if (!$inner.querySelector('.modal-backdrop')) {
+      var backdrop = document.createElement('div');
+      backdrop.innerHTML = '<div class="modal-backdrop fade"></div>';
+
+      insertAfter(backdrop, $row)
+    }
+  }
+
   render() {
     const { t, id, src, alt, title, description, link, skills, images } = this.props;
 
+    // Translate texts
     let _images = images
     _images = _images.map((image, i) => {
       const caption = t(image.caption)
@@ -144,6 +173,8 @@ class ProjectItem extends Component {
 
       return image
     })
+
+    this.detectLoadImages(_images)
 
     // Skills to badgets
     let SkillsItems = ''
@@ -191,7 +222,7 @@ class ProjectItem extends Component {
             </div>
 
             { _images ? (
-              <UncontrolledCarousel items={ _images } />
+              <UncontrolledCarousel items={ _images } autoPlay={ false } />
             ) : null }
           </ModalBody>
           <ModalFooter className="p-0">

@@ -33,7 +33,7 @@ class Header extends Component {
     return (
       <header className="page-header sticky-md">
 	      <Navbar dark expand="md" className="bg-dark navbar-header">
-	        <NavLink className='navbar-brand' href='/'>DTsurcan</NavLink>
+	        <NavLink className='navbar-brand' href='https://playmix.github.io/portfolio/'>DTsurcan</NavLink>
 
 	        <NavbarToggler onClick={ this.navbarToggle } />
 

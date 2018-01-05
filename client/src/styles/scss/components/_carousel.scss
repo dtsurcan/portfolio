@@ -1,3 +1,22 @@
+.carousel-item {
+  background: url('./../../images/loading.svg') center center no-repeat;
+  min-height: 400px;
+
+  @include transition($transition-base);
+
+  img {
+    opacity: 0;
+
+    @include transition($transition-base);
+  }
+
+  &[data-is-loaded="true"] {
+    img {
+      opacity: 1;
+    }
+  }
+}
+
 .carousel-caption {
   background: rgba($black, .5);
 
