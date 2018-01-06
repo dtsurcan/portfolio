@@ -8,16 +8,15 @@ import Home from './Home';
 class App extends Component {
 
   render() {
-
     return (
       <div>
-        <Header/>
+        <Header />
 
         <main className="page-main">
           <Home />
         </main>
 
-        <Footer/>
+        <Footer />
       </div>
     );
   }

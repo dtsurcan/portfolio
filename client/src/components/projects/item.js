@@ -34,7 +34,6 @@ class ProjectItem extends Component {
     this.toggleNext = this.toggleNext.bind(this)
     this.getElements = this.getElements.bind(this)
     this.createModalBackdrop = this.createModalBackdrop.bind(this)
-    this.detectLoadImages = this.detectLoadImages.bind(this)
   }
 
   componentDidMount() {
@@ -161,32 +160,47 @@ class ProjectItem extends Component {
     }
   }
 
-  render() {
-    const { t, id, src, alt, title, description, link, skills, images } = this.props;
+  preMakeCarouselItems(t, items) {
+    let _items = items
 
-    // Translate texts
-    let _images = images
-    _images = _images.map((image, i) => {
-      const caption = t(image.caption)
-      image.altText = caption
-      image.caption = caption
+    const translateCaption = item => {
+      const caption = t(item.caption)
+      item.altText = caption
+      item.caption = caption
 
-      return image
-    })
+      return item
+    }
 
-    this.detectLoadImages(_images)
+    _items = _items.map(translateCaption)
 
-    // Skills to badgets
+    this.detectLoadImages(_items)
+
+    return _items
+  }
+
+  preMakeSkillsItems = (items) => {
     let SkillsItems = ''
-    if (skills) {
-      let items = skills
-          items = items.split(',')
-      SkillsItems = items.map((item, i) => {
+    if (items) {
+      let _items = items
+          _items = _items.split(',')
+      SkillsItems = _items.map((item, i) => {
         return (
           <Badge color="light" key={i}>{ item }</Badge>
         )
       })
     }
+
+    return SkillsItems;
+  }
+
+  render() {
+    const { t, id, src, alt, title, description, link, skills, images } = this.props;
+
+    // Images for carousel
+    let CarouselImages = this.preMakeCarouselItems(t, images)
+
+    // Skills to badgets
+    let SkillsItems = this.preMakeSkillsItems(skills)
 
     return (
       <div>
@@ -221,8 +235,8 @@ class ProjectItem extends Component {
               ) : null }
             </div>
 
-            { _images ? (
-              <UncontrolledCarousel items={ _images } autoPlay={ false } />
+            { CarouselImages ? (
+              <UncontrolledCarousel items={ CarouselImages } autoPlay={ false } />
             ) : null }
           </ModalBody>
           <ModalFooter className="p-0">
