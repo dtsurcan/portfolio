@@ -1,8 +1,12 @@
 .carousel-item {
   background: url('./../../images/loading.svg') center center no-repeat;
-  min-height: 400px;
+  min-height: 200px;
 
   @include transition($transition-base);
+
+  @include media-breakpoint-up(sm) {
+    min-height: 400px;
+  }
 
   img {
     opacity: 0;
@@ -11,6 +15,8 @@
   }
 
   &[data-is-loaded="true"] {
+    background: none;
+
     img {
       opacity: 1;
     }

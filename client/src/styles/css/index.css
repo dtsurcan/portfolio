@@ -14,13 +14,18 @@
 
 .carousel-item {
   background: url("./../../images/loading.svg") center center no-repeat;
-  min-height: 400px;
+  min-height: 200px;
   transition: all 0.2s ease-in-out; }
+  @media (min-width: 576px) {
+    .carousel-item {
+      min-height: 400px; } }
   .carousel-item img {
     opacity: 0;
     transition: all 0.2s ease-in-out; }
-  .carousel-item[data-is-loaded="true"] img {
-    opacity: 1; }
+  .carousel-item[data-is-loaded="true"] {
+    background: none; }
+    .carousel-item[data-is-loaded="true"] img {
+      opacity: 1; }
 
 .carousel-caption {
   background: rgba(0, 0, 0, 0.5); }
