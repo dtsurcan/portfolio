@@ -208,7 +208,7 @@ class ProjectItem extends Component {
           <CardImg src={ src } alt={ alt }/>
           <CardBody>
             <div className="content">
-              <CardLink onClick={ this.toggleModal } className="details"><i className="fa fa-eye" /></CardLink>
+              <CardLink onClick={ this.toggleModal } className="details"><i className="fa fa-search-plus" /></CardLink>
               <CardLink href={ link } target="_blank" className="title">{ title }</CardLink>
               <div>
                 { SkillsItems }
