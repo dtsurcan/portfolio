@@ -24,11 +24,6 @@ const i18nextOptions = {
     allowMultiLoading: false
   },
 
-
-  // interpolation: {
-  //   escapeValue: false, // not needed for react!!
-  // },
-
   react: {
     wait: true
   }

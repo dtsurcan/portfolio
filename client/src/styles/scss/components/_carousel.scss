@@ -1,5 +1,26 @@
 .carousel-item {
-  min-height: 400px;
+  background: url('./../../images/loading.svg') center center no-repeat;
+  min-height: 200px;
+
+  @include transition($transition-base);
+
+  @include media-breakpoint-up(sm) {
+    min-height: 400px;
+  }
+
+  img {
+    opacity: 0;
+
+    @include transition($transition-base);
+  }
+
+  &[data-is-loaded="true"] {
+    background: none;
+
+    img {
+      opacity: 1;
+    }
+  }
 }
 
 .carousel-caption {

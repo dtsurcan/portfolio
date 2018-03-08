@@ -33,21 +33,29 @@ class ProjectItem extends Component {
     this.togglePrev = this.togglePrev.bind(this)
     this.toggleNext = this.toggleNext.bind(this)
     this.getElements = this.getElements.bind(this)
+    this.createModalBackdrop = this.createModalBackdrop.bind(this)
   }
 
   componentDidMount() {
-    const $current = document.getElementById('project-item-'+ this.props.id)
-    const $inner = parents($current, '.inner')[0]
-    const $row = parents($current, '.row')[0]
-
-    if (!$inner.querySelector('.modal-backdrop')) {
-      var backdrop = document.createElement('div');
-      backdrop.innerHTML = '<div class="modal-backdrop fade"></div>';
-
-      insertAfter(backdrop, $row)
-    }
+    this.createModalBackdrop()
   }
 
+  detectLoadImages(images) {
+    images.forEach(image => {
+      const objImage = new Image();
+
+      objImage.src = image.src;
+      objImage.onload = () => {
+        const element = document.querySelector('[src="'+image.src+'"]')
+
+        if (element !== null) {
+          element.parentNode.setAttribute('data-is-loaded', true)
+        }
+      };
+    })
+  }
+
+  // Get Projects elements
   getElements() {
     const $current = document.getElementById('project-item-'+ this.props.id)
     const $row = parents($current, '.row')[0]
@@ -77,6 +85,7 @@ class ProjectItem extends Component {
     }
   }
 
+  // Open modal project
   toggleModal() {
     const elements = this.getElements()
     const direction = elements.current.getAttribute('direction')
@@ -91,6 +100,7 @@ class ProjectItem extends Component {
     });
   }
 
+  // Close modal project
   closeModal() {
     const elements = this.getElements()
 
@@ -109,6 +119,7 @@ class ProjectItem extends Component {
     }, 300)
   }
 
+  // Show previous modal project
   togglePrev() {
     const elements = this.getElements()
 
@@ -121,6 +132,7 @@ class ProjectItem extends Component {
     }, 100)
   }
 
+  // Show next modal project
   toggleNext() {
     const elements = this.getElements()
 
@@ -133,29 +145,62 @@ class ProjectItem extends Component {
     }, 100)
   }
 
-  render() {
-    const { t, id, src, alt, title, description, link, skills, images } = this.props;
+  // Make backdrop for modal
+  createModalBackdrop() {
+    const $current = document.getElementById('project-item-'+ this.props.id)
+    const $inner = parents($current, '.inner')[0]
+    const $row = parents($current, '.row')[0]
 
-    let _images = images
-    _images = _images.map((image, i) => {
-      const caption = t(image.caption)
-      image.altText = caption
-      image.caption = caption
+    // Add backdrop element
+    if (!$inner.querySelector('.modal-backdrop')) {
+      var backdrop = document.createElement('div');
+      backdrop.innerHTML = '<div class="modal-backdrop fade"></div>';
 
-      return image
-    })
+      insertAfter(backdrop, $row)
+    }
+  }
 
-    // Skills to badgets
+  preMakeCarouselItems(t, items) {
+    let _items = items
+
+    const translateCaption = item => {
+      const caption = t(item.caption)
+      item.altText = caption
+      item.caption = caption
+
+      return item
+    }
+
+    _items = _items.map(translateCaption)
+
+    this.detectLoadImages(_items)
+
+    return _items
+  }
+
+  preMakeSkillsItems = (items) => {
     let SkillsItems = ''
-    if (skills) {
-      let items = skills
-          items = items.split(',')
-      SkillsItems = items.map((item, i) => {
+    if (items) {
+      let _items = items
+          _items = _items.split(',')
+      SkillsItems = _items.map((item, i) => {
         return (
           <Badge color="light" key={i}>{ item }</Badge>
         )
       })
     }
+
+    return SkillsItems;
+  }
+
+  render() {
+    const { t, id, src, alt, title, description, link, skills, images } = this.props;
+
+    // Images for carousel
+    let CarouselImages = this.preMakeCarouselItems(t, images)
+
+    // Skills to badgets
+    let SkillsItems = this.preMakeSkillsItems(skills)
 
     return (
       <div>
@@ -163,7 +208,7 @@ class ProjectItem extends Component {
           <CardImg src={ src } alt={ alt }/>
           <CardBody>
             <div className="content">
-              <CardLink onClick={ this.toggleModal } className="details"><i className="fa fa-eye" /></CardLink>
+              <CardLink onClick={ this.toggleModal } className="details"><i className="fa fa-search-plus" /></CardLink>
               <CardLink href={ link } target="_blank" className="title">{ title }</CardLink>
               <div>
                 { SkillsItems }
@@ -190,8 +235,8 @@ class ProjectItem extends Component {
               ) : null }
             </div>
 
-            { _images ? (
-              <UncontrolledCarousel items={ _images } />
+            { CarouselImages ? (
+              <UncontrolledCarousel items={ CarouselImages } autoPlay={ false } />
             ) : null }
           </ModalBody>
           <ModalFooter className="p-0">
