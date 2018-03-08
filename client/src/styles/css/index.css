@@ -12,6 +12,9 @@
 .fadebounce-animated {
   animation: fadebounce 3s; }
 
+.carousel-item {
+  min-height: 400px; }
+
 .carousel-caption {
   background: rgba(0, 0, 0, 0.5); }
   .carousel-caption h3 {

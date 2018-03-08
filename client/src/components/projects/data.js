@@ -31,7 +31,7 @@ export function ProjectsData( t ) {
       alt: 'Exclusive',
       title: 'Exclusive.one',
       description: "exclusive-description",
-      link: 'https://exclusive.one/',
+      link: 'https://exclusive-html.herokuapp.com/',
       skills: 'HTML5,CSS3,jQuery,Bootstrap4,PSD to HTML',
       images: [
         {
