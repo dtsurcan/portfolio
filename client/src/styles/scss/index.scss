@@ -1,0 +1,24 @@
+@import "./bootstrap/functions";
+@import "./bootstrap/variables";
+@import "./bootstrap/mixins";
+
+@import "./variables";
+
+@import './animations';
+
+// components
+@import './components/carousel';
+@import './components/cursor';
+@import './components/modal';
+@import './components/progress';
+@import './components/project';
+@import './components/skill';
+
+// Layout
+@import './layout/header';
+@import './layout/footer';
+@import './layout/main';
+@import './layout/loader';
+
+// Pages
+@import './pages/home';

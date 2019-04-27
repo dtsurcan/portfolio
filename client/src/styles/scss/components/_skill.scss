@@ -1,0 +1,72 @@
+$sk-size: 9rem;
+$sk-size-sm: 12rem;
+.skill-item {
+  height: $sk-size;
+  width: $sk-size;
+  background: none;
+  border: 0 none;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+
+  @include media-breakpoint-up(sm) {
+    width: $sk-size-sm;
+    height: $sk-size-sm;
+  }
+
+  svg {
+    height: $sk-size;
+    width: $sk-size;
+    position: absolute;
+    left: 50%;
+    margin-left: -50%;
+    transform: rotate(90deg);
+
+    @include transition($transition-base);
+
+    @include media-breakpoint-up(sm) {
+      width: $sk-size-sm;
+      height: $sk-size-sm;
+    }
+
+    path {
+      stroke: theme-color("primary");
+      fill: none;
+
+      @include transition($transition-base);
+    }
+  }
+
+  h4 {
+    font-size: .9rem;
+    margin-bottom: 0;
+    font-weight: $font-weight-light;
+    position: relative;
+    z-index: 1;
+
+    @include transition($transition-base);
+
+    @include media-breakpoint-up(sm) {
+      font-size: 1.1rem;
+    }
+  }
+
+  .card-body {
+    align-self: center;
+    align-items: center;
+    display: flex;
+    padding: 1rem 2rem;
+  }
+
+  @include hover-focus {
+    svg {
+      path {
+        fill: theme-color("primary");
+      }
+    }
+
+    h4 {
+      color: $black;
+    }
+  }
+}

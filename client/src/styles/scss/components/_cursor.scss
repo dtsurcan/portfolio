@@ -1,0 +1,9 @@
+.cursor {
+  opacity: 0;
+
+  @include transition(all ease .1s)
+
+  &.show-cursor {
+    opacity: 1;
+  }
+}

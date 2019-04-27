@@ -1,0 +1,18 @@
+.page-loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-fixed + 100;
+  width: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: $black;
+
+  @include transition($transition-base);
+
+  &.loaded {
+    opacity: 0;
+  }
+}

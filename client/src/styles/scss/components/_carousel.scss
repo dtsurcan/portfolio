@@ -1,0 +1,46 @@
+.carousel-item {
+  background: url('./../../images/loading.svg') center center no-repeat;
+  min-height: 200px;
+
+  @include transition($transition-base);
+
+  @include media-breakpoint-up(sm) {
+    min-height: 400px;
+  }
+
+  img {
+    opacity: 0;
+
+    @include transition($transition-base);
+  }
+
+  &[data-is-loaded="true"] {
+    background: none;
+
+    img {
+      opacity: 1;
+    }
+  }
+}
+
+.carousel-caption {
+  background: rgba($black, .5);
+
+  h3 {
+    display: none;
+  }
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  @include hover-focus {
+    // background: rgba($black, .1);
+    cursor: pointer;
+
+    @include transition($transition-base);
+  };
+}
+
+.carousel-indicators .active {
+  background-color: theme-color("primary");
+}

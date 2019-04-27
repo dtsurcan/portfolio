@@ -1,0 +1,102 @@
+$size: 16rem;
+$size-sm: 20rem;
+.project-item {
+  width: $size;
+  height: $size;
+  max-width: 100%;
+  background: none;
+  border: 3px solid gray("800");
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto $grid-gutter-width;
+
+  @include border-radius(0);
+  @include transition(all ease 1s);
+
+  @include media-breakpoint-up(sm) {
+    width: $size-sm;
+    height: $size-sm;
+  }
+
+  > img {
+    @include transition(all ease 1s);
+  }
+
+  .card-body {
+    background: rgba($black, .9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding: 0;
+
+    @include border-radius(0);
+    @include transition(all ease 1s);
+
+    span.badge {
+      font-weight: $font-weight-light;
+      margin-right: .2rem;
+    }
+  }
+
+  .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: $grid-gutter-width;
+    transform: translateY(1rem);
+
+    @include transition(all ease .6s);
+
+    > a.title {
+      display: inline-block;
+      margin-bottom: 1rem;
+      margin-left: 0;
+
+      @include hover-focus {
+        text-decoration: underline;
+      };
+    }
+
+    > a.details {
+      font-size: $font-size-lg;
+      float: right;
+      transform: translateY(3rem);
+      opacity: 0;
+
+      @include transition(all ease 1s);
+
+      @include hover-focus {
+        cursor: pointer;
+        color: theme-color("primary");
+
+        @include transition($transition-base);
+      };
+    }
+  }
+
+  @include hover-focus {
+    border-color: theme-color("primary");
+
+    > img {
+      opacity: .1;
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      opacity: 1;
+    }
+
+    .content {
+      transform: translateY(0);
+
+      > a.details {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  };
+}

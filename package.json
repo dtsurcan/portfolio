@@ -1,0 +1,16 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "This is my portfolio",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/playmix/portfolio.git"
+  },
+  "author": "Dmitry Tsurcan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/playmix/portfolio/issues"
+  },
+  "homepage": "https://github.com/playmix/portfolio#readme"
+}
